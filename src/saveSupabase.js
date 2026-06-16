@@ -13,32 +13,35 @@ function fileBase(job) {
   return `${safeName(job.company)}_${safeName(job.title).slice(0, 20)}`;
 }
 
-async function uploadFile(base, suffix, folder) {
-  const ext = "pdf";
-  const filePath = path.join("generated", `${base}-${suffix}.pdf`);
-  const mdPath = path.join("generated", `${base}-${suffix}.md`);
-
-  const actualPath = fs.existsSync(filePath) ? filePath : fs.existsSync(mdPath) ? mdPath : null;
-  if (!actualPath) return null;
-
-  const isPdf = actualPath.endsWith(".pdf");
-  const contentType = isPdf ? "application/pdf" : "text/markdown";
-  const storageExt = isPdf ? "pdf" : "md";
-  const storagePath = `${folder}/${base}-${suffix}.${storageExt}`;
-
-  const content = fs.readFileSync(actualPath);
-
+async function uploadToStorage(localPath, storagePath, contentType) {
+  const content = fs.readFileSync(localPath);
   const { error } = await supabase.storage
     .from("job-documents")
     .upload(storagePath, content, { contentType, upsert: true });
 
   if (error) {
-    console.error(`  ⚠ ${suffix} upload failed: ${error.message}`);
+    console.error(`  ⚠ ${storagePath} upload failed: ${error.message}`);
     return null;
   }
 
   const { data } = supabase.storage.from("job-documents").getPublicUrl(storagePath);
   return data?.publicUrl || null;
+}
+
+async function uploadFile(base, suffix, folder) {
+  const pdfPath = path.join("generated", `${base}-${suffix}.pdf`);
+  const mdPath = path.join("generated", `${base}-${suffix}.md`);
+  let pdfUrl = null;
+
+  if (fs.existsSync(pdfPath)) {
+    pdfUrl = await uploadToStorage(pdfPath, `${folder}/${base}-${suffix}.pdf`, "application/pdf");
+  }
+
+  if (fs.existsSync(mdPath)) {
+    await uploadToStorage(mdPath, `${folder}/${base}-${suffix}.md`, "text/markdown");
+  }
+
+  return pdfUrl;
 }
 
 let saved = 0;
@@ -101,7 +104,7 @@ console.log(`\nSaved ${saved} / ${eligible.length} eligible jobs${failed ? ` (${
 
 // Limpiar archivos locales del generated/
 if (fs.existsSync("generated")) {
-  const files = fs.readdirSync("generated").filter((f) => f !== ".gitkeep" && (f.endsWith(".md") || f.endsWith(".pdf")));
+  const files = fs.readdirSync("generated").filter((f) => f !== ".gitkeep" && f.endsWith(".pdf"));
   for (const f of files) {
     fs.unlinkSync(path.join("generated", f));
   }

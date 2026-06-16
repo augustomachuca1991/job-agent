@@ -3,8 +3,6 @@ interface Props {
   onSearchChange: (v: string) => void;
   scoreMin: number;
   onScoreChange: (v: number) => void;
-  statusFilter: string;
-  onStatusChange: (v: string) => void;
 }
 
 const scoreOptions = [
@@ -15,53 +13,36 @@ const scoreOptions = [
   { value: 60, label: "≥ 60" },
 ];
 
-const statusOptions = [
-  { value: "all", label: "Todos los estados" },
-  { value: "NEW", label: "NEW" },
-  { value: "APPLIED", label: "APPLIED" },
-  { value: "INTERVIEW", label: "INTERVIEW" },
-  { value: "REJECTED", label: "REJECTED" },
-];
-
-export default function Filters({
-  search,
-  onSearchChange,
-  scoreMin,
-  onScoreChange,
-  statusFilter,
-  onStatusChange,
-}: Props) {
+export default function Filters({ search, onSearchChange, scoreMin, onScoreChange }: Props) {
   return (
-    <div className="flex flex-wrap gap-3 mb-4">
-      <input
-        type="text"
-        value={search}
-        onChange={(e) => onSearchChange(e.target.value)}
-        placeholder="Buscar empresa o puesto..."
-        className="flex-1 min-w-[200px] px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent"
-      />
+    <div className="flex items-center gap-2 px-5 py-3 border-b border-gray-200">
+      {/* Search */}
+      <div className="relative flex-1">
+        <svg
+          className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+          width="14" height="14" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => onSearchChange(e.target.value)}
+          placeholder="Buscar empresa o puesto…"
+          className="w-full pl-8 pr-3 py-1.5 text-sm border border-gray-200 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-300 focus:bg-white transition-colors"
+        />
+      </div>
 
+      {/* Score filter */}
       <select
         value={scoreMin}
         onChange={(e) => onScoreChange(Number(e.target.value))}
-        className="px-3 py-2 border border-gray-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-gray-400"
+        className="px-3 py-1.5 text-sm border border-gray-200 rounded-lg bg-gray-50 text-gray-700 focus:outline-none focus:ring-1 focus:ring-gray-300 cursor-pointer"
       >
         {scoreOptions.map((o) => (
-          <option key={o.value} value={o.value}>
-            {o.label}
-          </option>
-        ))}
-      </select>
-
-      <select
-        value={statusFilter}
-        onChange={(e) => onStatusChange(e.target.value)}
-        className="px-3 py-2 border border-gray-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-gray-400"
-      >
-        {statusOptions.map((o) => (
-          <option key={o.value} value={o.value}>
-            {o.label}
-          </option>
+          <option key={o.value} value={o.value}>{o.label}</option>
         ))}
       </select>
     </div>

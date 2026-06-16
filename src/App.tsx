@@ -3,7 +3,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { connect } from "./lib/supabase";
 import type { Application, SortField } from "./types";
 import ConfigForm from "./components/ConfigForm";
-import StatsBar from "./components/StatsBar";
+import Sidebar from "./components/Sidebar";
 import Filters from "./components/Filters";
 import JobTable from "./components/JobTable";
 
@@ -75,6 +75,16 @@ export default function App() {
     setError("");
   }, []);
 
+  const handleStatusUpdate = useCallback(
+    (id: string, status: string) => {
+      setApps((prev) => prev.map((j) => (j.id === id ? { ...j, status } : j)));
+      supabase?.from("applications").update({ status }).eq("id", id).then(({ error: err }) => {
+        if (err) setError(err.message);
+      });
+    },
+    [supabase]
+  );
+
   const handleSort = useCallback(
     (field: SortField) => {
       if (sortField === field) {
@@ -109,42 +119,50 @@ export default function App() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
-      <header className="flex flex-wrap items-center justify-between gap-4 mb-6">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight">Job Agent</h1>
-          <p className="text-sm text-gray-500">Dashboard de aplicaciones</p>
+    <div className="min-h-screen bg-gray-100 flex items-start justify-center p-6">
+      <div className="w-full max-w-5xl bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden flex">
+        {/* Sidebar */}
+        <Sidebar
+          apps={apps}
+          statusFilter={statusFilter}
+          onStatusChange={setStatusFilter}
+          onDisconnect={handleDisconnect}
+        />
+
+        {/* Main content */}
+        <div className="flex-1 flex flex-col min-w-0">
+          {/* Top bar with filters */}
+          <Filters
+            search={search}
+            onSearchChange={setSearch}
+            scoreMin={scoreMin}
+            onScoreChange={setScoreMin}
+          />
+
+          {/* States */}
+          {loading && (
+            <div className="flex items-center justify-center py-16 text-sm text-gray-400">
+              Cargando aplicaciones…
+            </div>
+          )}
+
+          {error && (
+            <div className="mx-5 mt-4 bg-red-50 border border-red-200 text-red-700 rounded-lg p-3 text-sm">
+              {error}
+            </div>
+          )}
+
+          {!loading && !error && (
+            <JobTable
+              apps={filtered}
+              sortField={sortField}
+              sortAsc={sortAsc}
+              onSort={handleSort}
+              onStatusUpdate={handleStatusUpdate}
+            />
+          )}
         </div>
-        <button
-          onClick={handleDisconnect}
-          className="text-sm text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
-        >
-          Desconectar
-        </button>
-      </header>
-
-      <StatsBar apps={filtered} />
-
-      <Filters
-        search={search}
-        onSearchChange={setSearch}
-        scoreMin={scoreMin}
-        onScoreChange={setScoreMin}
-        statusFilter={statusFilter}
-        onStatusChange={setStatusFilter}
-      />
-
-      {loading && (
-        <div className="text-center py-12 text-gray-400">Cargando aplicaciones...</div>
-      )}
-
-      {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4 mb-4 text-sm">
-          {error}
-        </div>
-      )}
-
-      {!loading && !error && <JobTable apps={filtered} sortField={sortField} sortAsc={sortAsc} onSort={handleSort} />}
+      </div>
     </div>
   );
 }
