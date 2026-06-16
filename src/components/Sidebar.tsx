@@ -24,13 +24,10 @@ export default function Sidebar({ apps, statusFilter, onStatusChange, onDisconne
         val === "all" ? total : apps.filter((j) => j.status === val).length;
 
     return (
-        <aside className="flex flex-col gap-6 w-[200px] shrink-0 bg-gray-50 border-r border-gray-200 p-5 min-h-full">
+        <aside className="flex flex-col gap-6 w-52 shrink-0 bg-gray-50 border-r border-gray-200 p-5 min-h-full">
             {/* Logo */}
-            <div className="flex items-center gap-2 pb-4 border-b border-gray-200">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-gray-500" aria-hidden="true">
-                    <rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-                </svg>
-                <span className="text-sm font-medium">Job Agent</span>
+            <div className="pb-4 border-b border-gray-200">
+                <img src="/logo.svg" alt="Job Agent" className="h-7" />
             </div>
 
             {/* Stats */}
