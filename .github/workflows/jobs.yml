@@ -41,9 +41,7 @@ jobs:
           VITE_GEMINI_API_KEY: ${{ secrets.VITE_GEMINI_API_KEY }}
           VITE_GEMINI_MODEL_URL: ${{ secrets.VITE_GEMINI_MODEL_URL }}
 
-      - run: npx playwright install chromium
-        env:
-          PLAYWRIGHT_BROWSERS_PATH: 0
+      - run: npx playwright install --with-deps chromium
 
       - run: node src/generatePDFs.js
 
