@@ -1,8 +1,8 @@
-// Fetch jobs from APIs based on profile
+import fs from "fs";
+import aggregateJobs from "./search/aggregator.js";
 
-async function searchJobs() {
-  // TODO: implement job search
-  console.log('Searching jobs...')
-}
+const jobs = await aggregateJobs();
 
-searchJobs()
+fs.writeFileSync("jobs.json", JSON.stringify(jobs, null, 2));
+
+console.log(`\nTotal: ${jobs.length} jobs from aggregator`);

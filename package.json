@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "scripts": {
+    "search": "node --env-file=.env src/searchJobs.js",
+    "score": "node --env-file=.env src/scoreJobs.js",
+    "save": "node --env-file=.env src/saveSupabase.js",
+    "notify": "node --env-file=.env src/notifyTelegram.js",
+    "pipeline": "node --env-file=.env src/searchJobs.js && node --env-file=.env src/scoreJobs.js && node --env-file=.env src/saveSupabase.js && node --env-file=.env src/notifyTelegram.js"
+  }
+}

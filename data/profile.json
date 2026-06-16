@@ -1,10 +1,7 @@
 {
-  "name": "",
-  "targetRole": "",
-  "skills": [],
-  "locations": [],
-  "keywords": [],
-  "excludeKeywords": [],
-  "minSalary": 0,
-  "remote": false
+  "roles": ["Backend Developer", "Full Stack Developer", "Frontend Developer", "DevOps Engineer"],
+  "experience": 6,
+  "salary_min_ars": 2000000,
+  "english": "intermediate",
+  "skills": ["Laravel", "PHP", "Node.js", "NestJS", "React", "Vue", "Docker", "Kubernetes", "AWS", "PostgreSQL", "MySQL", "Redis", "MongoDB"]
 }
