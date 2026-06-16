@@ -10,6 +10,18 @@ import JobTable from "./components/JobTable";
 const STORAGE_URL = "supabase_url";
 const STORAGE_KEY = "supabase_key";
 
+function getSupabaseConfig() {
+  const envUrl = import.meta.env.VITE_SUPABASE_URL;
+  const envKey = import.meta.env.VITE_SUPABASE_KEY;
+  if (envUrl && envKey) return { url: envUrl, key: envKey };
+
+  const lsUrl = localStorage.getItem(STORAGE_URL);
+  const lsKey = localStorage.getItem(STORAGE_KEY);
+  if (lsUrl && lsKey) return { url: lsUrl, key: lsKey };
+
+  return null;
+}
+
 export default function App() {
   const [supabase, setSupabase] = useState<SupabaseClient | null>(null);
   const [apps, setApps] = useState<Application[]>([]);
@@ -22,10 +34,9 @@ export default function App() {
   const [sortAsc, setSortAsc] = useState(false);
 
   useEffect(() => {
-    const url = localStorage.getItem(STORAGE_URL);
-    const key = localStorage.getItem(STORAGE_KEY);
-    if (url && key) {
-      setSupabase(connect(url, key));
+    const cfg = getSupabaseConfig();
+    if (cfg) {
+      setSupabase(connect(cfg.url, cfg.key));
     } else {
       setLoading(false);
     }

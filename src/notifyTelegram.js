@@ -29,12 +29,12 @@ for (const job of topJobs) {
 
   try {
     const res = await fetch(
-      `https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/sendMessage`,
+      `https://api.telegram.org/bot${process.env.VITE_TELEGRAM_TOKEN}/sendMessage`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          chat_id: process.env.TELEGRAM_CHAT_ID,
+          chat_id: process.env.VITE_TELEGRAM_CHAT_ID,
           text: message,
         }),
       }

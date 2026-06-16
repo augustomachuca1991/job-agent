@@ -8,10 +8,10 @@ const QUERIES = [
 ];
 
 export default async function searchSerpAPI() {
-  const { SERPAPI_KEY } = process.env;
+  const { VITE_SERPAPI_KEY } = process.env;
 
-  if (!SERPAPI_KEY) {
-    console.warn("SerpAPI: missing SERPAPI_KEY");
+  if (!VITE_SERPAPI_KEY) {
+    console.warn("SerpAPI: missing VITE_SERPAPI_KEY");
     return [];
   }
 
@@ -20,7 +20,7 @@ export default async function searchSerpAPI() {
 
   for (const q of QUERIES) {
     try {
-      const url = `https://serpapi.com/search.json?q=${encodeURIComponent(q)}&api_key=${SERPAPI_KEY}&engine=google&gl=ar&hl=es`;
+      const url = `https://serpapi.com/search.json?q=${encodeURIComponent(q)}&api_key=${VITE_SERPAPI_KEY}&engine=google&gl=ar&hl=es`;
 
       const res = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" } });
       if (!res.ok) {

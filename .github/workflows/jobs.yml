@@ -20,23 +20,24 @@ jobs:
 
       - run: node src/searchJobs.js
         env:
-          ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
-          ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
-          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+          VITE_ADZUNA_APP_ID: ${{ secrets.VITE_ADZUNA_APP_ID }}
+          VITE_ADZUNA_APP_KEY: ${{ secrets.VITE_ADZUNA_APP_KEY }}
+          VITE_SERPAPI_KEY: ${{ secrets.VITE_SERPAPI_KEY }}
 
       - run: node src/scoreJobs.js
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          VITE_GEMINI_API_KEY: ${{ secrets.VITE_GEMINI_API_KEY }}
+          VITE_GEMINI_MODEL_URL: ${{ secrets.VITE_GEMINI_MODEL_URL }}
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.VITE_SUPABASE_SERVICE_ROLE_KEY }}
 
       - run: node src/saveSupabase.js
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_KEY: ${{ secrets.VITE_SUPABASE_KEY }}
+          VITE_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.VITE_SUPABASE_SERVICE_ROLE_KEY }}
 
       - run: node src/notifyTelegram.js
         env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          VITE_TELEGRAM_TOKEN: ${{ secrets.VITE_TELEGRAM_TOKEN }}
+          VITE_TELEGRAM_CHAT_ID: ${{ secrets.VITE_TELEGRAM_CHAT_ID }}

@@ -44,6 +44,11 @@ for (const job of topJobs) {
 const scoredJobs = [];
 
 for (const job of topJobs) {
+  if (!job.url) {
+    console.warn(`⏭️ Skip (no url): ${job.title} @ ${job.company}`);
+    continue;
+  }
+
   const processed = await isProcessed(job.url);
 
   if (processed) {
@@ -66,7 +71,7 @@ console.log(`\nScored ${scoredJobs.length} jobs`);
 async function callGeminiWithRetry(prompt, maxRetries = 5) {
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-3.1-flash-lite:generateContent?key=${process.env.GEMINI_API_KEY}`, {
+      const response = await fetch(`${process.env.VITE_GEMINI_MODEL_URL}:generateContent?key=${process.env.VITE_GEMINI_API_KEY}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

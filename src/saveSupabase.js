@@ -55,11 +55,11 @@ for (let i = 0; i < eligible.length; i++) {
       uploadFile(base, "cover", "covers"),
     ]);
 
-    const res = await fetch(`${process.env.SUPABASE_URL}/rest/v1/applications`, {
+    const res = await fetch(`${process.env.VITE_SUPABASE_URL}/rest/v1/applications`, {
       method: "POST",
       headers: {
-        apikey: process.env.SUPABASE_KEY,
-        Authorization: `Bearer ${process.env.SUPABASE_KEY}`,
+        apikey: process.env.VITE_SUPABASE_KEY,
+        Authorization: `Bearer ${process.env.VITE_SUPABASE_KEY}`,
         "Content-Type": "application/json",
         Prefer: "return=minimal",
       },

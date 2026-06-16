@@ -9,13 +9,13 @@
     ],
     "source": "Adzuna",
     "_rank": 20,
-    "score": 85,
+    "score": 88,
     "recommended": true,
     "job_title": "Backend Developer",
     "work_mode": "Hybrid",
-    "seniority": "Senior/Mid-Level",
+    "seniority": "Senior",
     "salary_detected": false,
-    "salary_estimated": "Not specified",
+    "salary_estimated": "No especificado",
     "matching_skills": [
       "Node.js",
       "AWS",
@@ -26,23 +26,25 @@
       "CI/CD"
     ],
     "missing_skills": [
-      "TypeScript (aunque es lenguaje base de NestJS, su fuerte)",
-      "Specific AWS services (Kinesis, SQS, SNS, DynamoDB)"
+      "TypeScript",
+      "DynamoDB",
+      "Mocha/Sinon"
     ],
     "strengths_for_this_role": [
-      "Más de 6 años de experiencia validan su capacidad para arquitectura de microservicios.",
-      "Dominio sólido de Node.js y NestJS, lo cual se traduce directamente a TypeScript.",
-      "Experiencia robusta en ecosistemas Cloud y orquestación de contenedores (K8s/Docker).",
-      "Familiaridad con bases de datos relacionales y NoSQL solicitadas."
+      "Más de 6 años de experiencia profesional",
+      "Dominio sólido de Node.js y ecosistema cloud",
+      "Experiencia previa con microservicios y arquitectura escalable",
+      "Conocimiento profundo de Docker y Kubernetes"
     ],
     "weaknesses_for_this_role": [
-      "La oferta requiere presencia física/híbrida en Crewe (UK), lo cual es incompatible con la ubicación del candidato a menos que contemple reubicación.",
-      "El inglés es intermedio; trabajar en un equipo tech en UK podría requerir mayor fluidez."
+      "La oferta requiere presencia híbrida en Crewe (Reino Unido), lo cual puede ser un desafío logístico si el candidato no reside allí",
+      "La necesidad de TypeScript (aunque es altamente transferible para un desarrollador JS experimentado)",
+      "El nivel de inglés requerido no fue explicitado, pero al ser una vacante en el Reino Unido, se asume un requisito de comunicación fluido"
     ],
-    "probability_of_interview": 75,
-    "recommendation": "Muy recomendable. El perfil técnico es un 'perfect match' para la stack tecnológica pedida. Sin embargo, antes de aplicar, es fundamental confirmar si el candidato está dispuesto a relocalizarse en el Reino Unido, ya que la modalidad es 'Hybrid' en Crewe.",
-    "cv_focus": "Resaltar los proyectos donde se trabajó con arquitecturas de microservicios en AWS y el dominio de TypeScript/NestJS como base para el stack de Node.js.",
-    "cover_letter_focus": "Enfocarse en la experiencia con sistemas escalables y capacidad de adaptación rápida a nuevos servicios específicos de AWS, mencionando la disponibilidad para trabajar en modalidad híbrida en la ubicación del cliente."
+    "probability_of_interview": 85,
+    "recommendation": "Muy recomendable. Tu stack tecnológico es altamente compatible con lo solicitado. El principal filtro será la ubicación geográfica (Crewe, UK) y la validación de tu nivel de inglés para entornos internacionales.",
+    "cv_focus": "Enfatizar tu experiencia en arquitecturas de microservicios, despliegues en AWS y gestión de bases de datos tanto SQL como NoSQL.",
+    "cover_letter_focus": "Destacar tu capacidad para adaptarte a TypeScript rápidamente dado tu dominio de Node.js y tu experiencia en proyectos SaaS de gran escala."
   },
   {
     "title": "Full Stack Developer TypeScript Node.js React",
@@ -57,39 +59,38 @@
     "score": 88,
     "recommended": true,
     "job_title": "Full Stack Developer TypeScript Node.js React",
-    "work_mode": "No especificado",
-    "seniority": "Mid-Level",
+    "work_mode": "Not specified",
+    "seniority": "Mid-level",
     "salary_detected": true,
-    "salary_estimated": "£45,000 - £55,000 per year (Equivalente superior a ARS 2.000.000 mensuales)",
+    "salary_estimated": "£45,000 - £55,000 (aprox. ARS 5.000.000 - 6.200.000 monthly)",
     "matching_skills": [
       "Node.js",
       "React",
       "AWS",
       "PostgreSQL",
       "Redis",
-      "Backend focus"
+      "Backend development"
     ],
     "missing_skills": [
-      "TypeScript (conocimiento transferible desde JS/Node)",
+      "TypeScript (aunque tiene experiencia en JavaScript/Node.js, es una transición menor)",
       "CloudFormation",
-      "ECS/Fargate",
       "DynamoDB"
     ],
     "strengths_for_this_role": [
-      "Más de 6 años de experiencia que cubren el nivel Mid-Level solicitado",
-      "Fuerte background en Backend y arquitectura Cloud",
-      "Experiencia transferible en infraestructura (Docker/Kubernetes es altamente comparable con ECS)",
-      "Dominio de herramientas de base de datos similares a las requeridas"
+      "Más de 6 años de experiencia profesional",
+      "Sólido background en ecosistema AWS y DevOps (Docker/K8s)",
+      "Experiencia con bases de datos SQL y NoSQL",
+      "Perfil Full Stack alineado con el stack solicitado"
     ],
     "weaknesses_for_this_role": [
-      "Falta de experiencia específica en TypeScript (aunque es un salto lógico para un desarrollador JS)",
-      "Requiere ajuste de stack tecnológico hacia el ecosistema AWS serverless específico",
-      "El idioma inglés es un factor crítico al ser una oferta en GBP"
+      "Falta de experiencia específica en TypeScript (aunque es fácilmente transferible)",
+      "Requiere dominio de herramientas de IaC (CloudFormation) no mencionadas en su stack actual",
+      "El nivel de inglés exigido podría ser superior al intermedio declarado (al ser una empresa en UK)"
     ],
     "probability_of_interview": 85,
-    "recommendation": "Muy recomendable. El salario supera ampliamente el mínimo deseado y el perfil técnico es altamente compatible. La transición hacia TypeScript y las herramientas de AWS específicas de esta vacante no debería ser un problema dada tu experiencia con Docker, Kubernetes y Node.js.",
-    "cv_focus": "Destacar la experiencia con arquitecturas de microservicios y despliegues en AWS, enfatizando la capacidad de gestionar infraestructura mediante código.",
-    "cover_letter_focus": "Enfocarse en la rápida adaptabilidad técnica, mencionando tu dominio en Node.js y React, y expresando disposición para profundizar en las herramientas específicas de AWS como CloudFormation y DynamoDB."
+    "recommendation": "Muy recomendable. El perfil técnico de Augusto es altamente compatible con las necesidades de infraestructura y desarrollo de la empresa. El salario supera ampliamente sus expectativas. Se recomienda enfatizar su experiencia en AWS y su capacidad para aprender TypeScript rápidamente.",
+    "cv_focus": "Resaltar proyectos donde se haya trabajado con arquitectura de microservicios en AWS y demostrar capacidad de aprendizaje autodidacta en TypeScript.",
+    "cover_letter_focus": "Enfocar la carta en su madurez técnica (6+ años), su capacidad para manejar despliegues en AWS y su adaptabilidad a nuevos lenguajes como TypeScript, destacando su experiencia previa con Node.js."
   },
   {
     "title": "Desarrollador Full Stack",
@@ -103,9 +104,9 @@
     "_rank": 18,
     "score": 55,
     "recommended": false,
-    "job_title": "Desarrollador Full Stack (Soporte Técnico TI)",
+    "job_title": "Desarrollador Full Stack / Soporte Técnico TI",
     "work_mode": "No especificado",
-    "seniority": "Junior / Mid-level",
+    "seniority": "Junior / Mid-Level",
     "salary_detected": false,
     "salary_estimated": "No informado",
     "matching_skills": [
@@ -115,20 +116,23 @@
       "PostgreSQL",
       "JavaScript"
     ],
-    "missing_skills": [],
+    "missing_skills": [
+      "Soporte técnico de TI (Hardware/Redes)",
+      "Administración de infraestructura de redes (DHCP, DNS)"
+    ],
     "strengths_for_this_role": [
-      "Amplia experiencia técnica que supera los requisitos básicos de la oferta",
-      "Dominio de herramientas de desarrollo (Git, bases de datos) que son el core de la posición"
+      "Dominio tecnológico superior al requerido (sobrecalificado en desarrollo)",
+      "Experiencia con las tecnologías web principales solicitadas"
     ],
     "weaknesses_for_this_role": [
-      "Rol desalineado: La oferta es principalmente de Soporte Técnico TI, mientras que el candidato tiene perfil de Software Engineer Senior",
-      "Sobrecalificación: El candidato tiene +6 años de experiencia y busca roles de ingeniería, esta posición se enfoca en tareas de soporte y automatización básica",
-      "Desalineación de carrera: Aceptar este rol podría implicar un estancamiento profesional dado el alto nivel de especialización técnica que ya posee el candidato"
+      "La oferta está fuertemente orientada a soporte técnico (IT Support) y no a desarrollo de software puro",
+      "El nivel de experiencia requerido (1-2 años) es inferior a los 6+ años de Augusto",
+      "Existe riesgo de estancamiento profesional al realizar tareas de soporte técnico"
     ],
     "probability_of_interview": 90,
-    "recommendation": "No recomendable. Aunque el candidato cumple con todos los requisitos técnicos, la oferta es para una posición de 'Soporte Técnico TI', lo cual está por debajo del nivel de Seniority y del tipo de desafíos técnicos que el candidato suele gestionar. Solo aplicar en caso de necesidad imperiosa de empleo inmediato.",
-    "cv_focus": "En caso de decidir aplicar, enfocar el CV en la experiencia con automatizaciones y resolución de problemas técnicos para alinear el perfil senior con las necesidades operativas de la empresa.",
-    "cover_letter_focus": "Destacar la capacidad de aportar soluciones de ingeniería para optimizar los procesos de soporte técnico, tratando de elevar el alcance del rol hacia una figura de DevOps o Engineering Lead."
+    "recommendation": "No recomendable. Aunque el perfil técnico es compatible, el rol es de 'Soporte Técnico TI' con enfoque en desarrollo, no una posición de Software Engineering de nivel Senior. Augusto está ampliamente sobrecalificado y el rol no aprovecharía su stack avanzado (Docker, Kubernetes, AWS, etc.). Solo aplicar si es una necesidad económica urgente.",
+    "cv_focus": "En caso de aplicar, destacar la capacidad de automatización y scripting mediante Node.js y Python para justificar la parte de soporte técnico.",
+    "cover_letter_focus": "Enfocarse en la capacidad de resolver problemas complejos de infraestructura utilizando sus conocimientos avanzados de backend y DevOps."
   },
   {
     "title": "Software Engineer",
@@ -144,51 +148,52 @@
     "recommended": true,
     "job_title": "Software Engineer",
     "work_mode": "No especificado",
-    "seniority": "Experienced",
+    "seniority": "Experienced (Senior/SSR)",
     "salary_detected": false,
-    "salary_estimated": "No informado",
+    "salary_estimated": "No especificado",
     "matching_skills": [
       "Laravel",
       "Node.js",
       "Vue.js",
       "MySQL",
-      "Backend Development",
-      "Frontend Development"
+      "Backend API development",
+      "Frontend web development",
+      "Git"
     ],
     "missing_skills": [
       "Kafka"
     ],
     "strengths_for_this_role": [
-      "Augusto posee un match directo con el stack principal (Laravel, Node.js, Vue.js, MySQL).",
-      "Experiencia de 6 años que encaja perfectamente con el requisito de 'experienced'.",
-      "Versatilidad como Full Stack que se alinea con la descripción del puesto."
+      "Augusto posee experiencia directa en el core stack solicitado (Laravel, Node.js, Vue.js, MySQL).",
+      "Su perfil Full Stack encaja perfectamente con el requerimiento de la empresa de manejar tanto backend como frontend.",
+      "Cuenta con más de 6 años de experiencia, superando el requisito de 'experienced' solicitado."
     ],
     "weaknesses_for_this_role": [
-      "La oferta menciona Kafka, tecnología no listada en el perfil del candidato (aunque su experiencia general permite una curva de aprendizaje rápida).",
-      "No se menciona el rango salarial en la oferta."
+      "La oferta menciona Kafka, una tecnología que no está listada explícitamente en el perfil de Augusto (aunque es una habilidad altamente transferible dado su background en arquitectura y DevOps).",
+      "La falta de información salarial impide confirmar si cumple con el mínimo deseado."
     ],
-    "probability_of_interview": 85,
-    "recommendation": "Muy recomendable. El candidato es un match técnico casi perfecto para el stack descrito. Al ser una oferta de Software Engineer que pide experiencia tanto en backend como frontend, su perfil de 6 años es ideal.",
-    "cv_focus": "Resaltar los proyectos donde haya integrado arquitecturas orientadas a eventos o manejo de colas (aunque no sea Kafka específicamente) para compensar la falta de esa tecnología.",
-    "cover_letter_focus": "Enfatizar la capacidad de adaptación técnica y la experiencia profunda en el ecosistema Laravel y Node.js, mencionando que la curva de aprendizaje para Kafka será mínima dada su sólida base en ingeniería de software."
+    "probability_of_interview": 80,
+    "recommendation": "Muy recomendable. El perfil de Augusto es un 'perfect match' técnico para el stack de UHIN Career. Se recomienda aplicar destacando la capacidad de adaptación técnica y la experiencia profesional consolidada.",
+    "cv_focus": "Enfatizar proyectos realizados con el stack Laravel/Node.js/Vue.js y resaltar la experiencia en arquitecturas orientadas a eventos o manejo de colas para compensar la falta de Kafka.",
+    "cover_letter_focus": "Mencionar la sólida base en metodologías ágiles y CI/CD, y mostrar disposición para escalar el conocimiento en arquitecturas de mensajería como Kafka."
   },
   {
     "title": "Full Stack Developer (Laravel  Vue.js)",
     "company": "MicroVentures",
     "description": "About the Role: We're looking for a Full Stack Developer to join our engineering team. You'll work alongside senior engineers building features across the stack, developing APIs with Laravel and creating responsive interfaces with Vue.js . This is a great opportunity to grow your skills while contributing to a modern, well-architected platform. Our stack includes Laravel 12, Vue.js , MySQL, Redis, and TailwindCSS. What You'll Do: Develop and maintain features using PHP 8.4 and Laravel 12.x Buil…",
-    "url": "https://www.adzuna.com/land/ad/5559138302?se=Wv4Ps5Fp8RGL5KWYPU-8Gw&utm_medium=api&utm_source=7acc59fd&v=D1BCB7A07BC7627CA2AFE547FD5A9CA0FB30408A",
+    "url": "https://www.adzuna.com/land/ad/5559138302?se=al0PkaRp8RGkqKbDwZjUHw&utm_medium=api&utm_source=7acc59fd&v=D1BCB7A07BC7627CA2AFE547FD5A9CA0FB30408A",
     "tags": [
       "IT Jobs"
     ],
     "source": "Adzuna",
     "_rank": 17,
-    "score": 98,
+    "score": 95,
     "recommended": true,
     "job_title": "Full Stack Developer (Laravel Vue.js)",
-    "work_mode": "No especificado",
-    "seniority": "Senior/SSR",
+    "work_mode": "Not specified",
+    "seniority": "Mid-Senior",
     "salary_detected": false,
-    "salary_estimated": "No informado",
+    "salary_estimated": "Not disclosed",
     "matching_skills": [
       "PHP",
       "Laravel",
@@ -196,22 +201,21 @@
       "MySQL",
       "Redis"
     ],
-    "missing_skills": [
-      "TailwindCSS (experiencia transferible dada la fortaleza en Frontend)"
-    ],
+    "missing_skills": [],
     "strengths_for_this_role": [
-      "Coincidencia exacta con el stack principal (PHP/Laravel/Vue.js)",
-      "Seniority de 6 años alineado con la necesidad de trabajar con equipos senior",
-      "Dominio de arquitectura y TDD (ventaja competitiva para plataformas modernas)",
-      "Experiencia con bases de datos relacionales y caché que encaja con el stack"
+      "Experiencia exacta en el stack principal (Laravel/Vue.js)",
+      "Seniority de 6 años alineado perfectamente con los requisitos",
+      "Dominio de PHP moderno (8.4) y versiones recientes de Laravel",
+      "Perfil Full Stack altamente versátil para el equipo de ingeniería"
     ],
     "weaknesses_for_this_role": [
-      "La oferta no especifica salario ni modalidad, lo cual es el único punto de incertidumbre"
+      "No se especifica el rango salarial en la oferta",
+      "No se especifica la modalidad de trabajo (remoto/híbrido)"
     ],
-    "probability_of_interview": 95,
-    "recommendation": "Aplicar inmediatamente. Es una oportunidad de 'match' técnico casi perfecto con tu perfil. Al ser un stack que dominas a la perfección, destacas como candidato de alto impacto.",
-    "cv_focus": "Resaltar los años de experiencia trabajando con PHP 8.x y versiones recientes de Laravel, así como proyectos complejos donde hayas integrado Vue.js.",
-    "cover_letter_focus": "Enfocarse en la capacidad de construir APIs robustas y escalables con Laravel, mencionando tu experiencia en buenas prácticas (SOLID/TDD) para complementar el enfoque de 'well-architected platform' de la empresa."
+    "probability_of_interview": 90,
+    "recommendation": "Aplicar inmediatamente. El perfil de Augusto es un 'perfect match' técnico para esta posición. La experiencia con el stack específico (Laravel/Vue) garantiza que el proceso de selección sea muy favorable.",
+    "cv_focus": "Resaltar los proyectos donde se utilizó Laravel en conjunto con Vue.js y destacar la capacidad de trabajar en arquitecturas modernas y escalables.",
+    "cover_letter_focus": "Enfatizar la experiencia de 6 años trabajando en equipos colaborativos y la capacidad de contribuir desde el primer día al desarrollo de APIs y UI con el stack propuesto."
   },
   {
     "title": "Node.js Back-End Developer",
@@ -223,11 +227,11 @@
     ],
     "source": "Adzuna",
     "_rank": 17,
-    "score": 85,
+    "score": 88,
     "recommended": true,
     "job_title": "Node.js Back-End Developer",
     "work_mode": "Remote",
-    "seniority": "Mid-Level (1-3 years req)",
+    "seniority": "Mid-Level",
     "salary_detected": false,
     "salary_estimated": "Not specified",
     "matching_skills": [
@@ -236,28 +240,75 @@
       "React",
       "PostgreSQL",
       "MySQL",
-      "REST API design"
+      "API Design/REST"
     ],
     "missing_skills": [],
     "strengths_for_this_role": [
-      "Over-qualification (6+ years experience vs 1-3 requested)",
-      "Strong command of the core required stack (Node.js/NestJS/React)",
-      "Remote-friendly profile matching the company's requirement"
+      "Augusto excede los años de experiencia requeridos (6+ vs 1-3 solicitados), lo que lo posiciona como un candidato sólido.",
+      "Domina el stack tecnológico principal solicitado (Node.js/NestJS y React).",
+      "La modalidad remota coincide perfectamente con sus preferencias.",
+      "Cuenta con experiencia en bases de datos relacionales solicitadas."
     ],
     "weaknesses_for_this_role": [
-      "Potential over-qualification for a 1-3 year experience role might lead to salary expectation mismatch or lack of interest from the recruiter",
-      "Lack of salary transparency"
+      "El puesto pide 1-3 años de experiencia; al tener más de 6, podría ser percibido como 'overqualified' si la empresa busca específicamente un perfil junior/mid.",
+      "Al no haber información salarial, existe el riesgo de que la oferta esté por debajo del piso de ARS 2.000.000."
     ],
-    "probability_of_interview": 80,
-    "recommendation": "Muy recomendable. Tu perfil técnico es una coincidencia exacta con lo solicitado. Aunque pides un salario superior, tu experiencia consolidada de 6 años es un gran valor añadido para una Fintech. Asegúrate de destacar que buscas un rol de mayor responsabilidad o impacto que lo que sugiere el rango de 1-3 años en la descripción.",
-    "cv_focus": "Enfatizar los proyectos de alta complejidad (Fintech, escalabilidad, seguridad) realizados en los últimos 6 años para justificar tu valor más allá de los 3 años solicitados.",
-    "cover_letter_focus": "Destacar tu capacidad de aportar valor inmediato gracias a tu experiencia senior en arquitecturas escalables y buenas prácticas (TDD, SOLID, CI/CD), las cuales son críticas en el sector Fintech."
+    "probability_of_interview": 90,
+    "recommendation": "Muy recomendable. Augusto es un perfil altamente compatible. Dado que es una empresa en Canadá (Vancouver), es probable que el salario sea competitivo en moneda extranjera o ajustado al mercado internacional, superando probablemente sus expectativas mínimas. Se recomienda aplicar destacando la capacidad de liderazgo técnico dada su mayor experiencia.",
+    "cv_focus": "Enfatizar proyectos escalables desarrollados con NestJS y su capacidad de resolución de problemas complejos, aprovechando sus 6 años de trayectoria frente al requisito de 1-3 años.",
+    "cover_letter_focus": "Resaltar su adaptabilidad al trabajo remoto internacional y su familiaridad con entornos Fintech, mencionando su versatilidad como Full Stack que puede aportar valor más allá de lo puramente Backend."
+  },
+  {
+    "title": "Senior Full Stack AI Native Developer",
+    "company": "Leadtech",
+    "description": "<p>As part of the Development team as a Full-Stack Developer, you will be instrumental in building and scaling our platforms and products. You will work across our entire A.I technology stack to deliver a seamless and powerful user experience. You will be joining projects with a shipping fast approach and a modern tech stack.</p>\n<ul>\n<li>Extensive knowledge of Javascript/Typescript.</li>\n<li>Design, implement, and maintain RESTful APIs with NextJS/Express to manage user authentication, data processing, and orchestrate analysis workflows</li>\n<li>Model Context Protocol (MCP) Knowledge Agents with Claude SDK: to Build AI agents access to real-time data, APIs, and tools Create AI Agents that can actually take actions, Combine the reasoning power of LLMs with real-world integration</li>\n<li>Build AI Agents with LangGraph + LangFuse that can handle multi-step reasoning, Create workflows where AI agents collaborate or hand off tasks to other agents. Maintain conversation state and context across interactions and Handle complex decision trees and conditional logic</li>\n<li>Develop and maintain features on both our React frontend and Node.js (NextJS) backend.</li>\n<li>Build intuitive user interfaces using TypeScript, Vite, React and our UI component library, enabling users to upload media, manage their analyses, and interact with our web delivered product.</li>\n<li><strong>Integrate our platform with various external services like Payment Service Providers and APIs, and handle incoming webhooks for processing asynchronous tasks</strong></li>\n<li>Collaborate closely with AI product managers and AI specialists to translate complex requirements into robust, scalable features expressed in AI design prompts.</li>\n<li>Contribute to database schema design and write migrations for our PostgreSQL &amp; BigQuery databases.</li>\n<li>Knowledge of GCP to Collaborate with the team on application deployment and help maintain our cloud infrastructure on Google Cloud Platform.</li>\n</ul>\n<p><strong>Requirements</strong></p>\n<p>We are seeking a proactive and skilled developer who is passionate about building modern, data-driven applications.</p>\n<ul>\n<li>Extensive experience with the Python framework</li>\n<li>Deep API Integration experience with 3rd Party vendors. Being able to work with multiple types of SDK to integrate into our products quickly.</li>\n<li>A serious self-learner and someone that adapts to new tools and platforms very quickly and adapts it into their day to day workflow in days.</li>\n<li>TypeScript Proficiency: You are highly proficient in TypeScript and its application in both frontend (React) and backend (Node.js) environments.</li>\n<li>Frontend Expertise: Strong experience with React and modern state management, including Hooks and the Context API.</li>\n<li>Backend Expertise: Solid experience building and consuming REST APIs with Node.js and NextJS or Express.</li>\n<li>Database Skills: Experience with like PostgreSQL, and working with an ORM or query builder.</li>\n<li>Knowledge of LangGraph, LangChain, LangFuse,</li>\n<li>Problem-Solving Mindset: You are a collaborative problem-solver, eager to take on new challenges and contribute to a fast-paced development cycle.</li>\n<li>Passion for AI: A genuine passion and awareness for artificial intelligence and a strong desire to build products that leverage its capabilities to solve real-world problems. and bring those new discoveries to our product Portfolio.</li>\n<li>Very High Agency: in consultation with a Product Owner and the Engineering Manager, you must work with autonomy with a large degree of freedom to implement the business vision.</li>\n<li>Creativity and Proactivity: You have a passion for building great products, are eager to propose new features, and enjoy finding creative solutions to improve the user experience.</li>\n</ul>\n<h2><strong>Nice to Have:</strong></h2>\n<ul>\n<li>AI Project Experience: Previous experience working on projects involving AI, machine learning, or interacting with large language models (LLMs).</li>\n<li>Familiarity with UI component libraries.</li>\n<li>Knowledge of cloud platforms like Google Cloud Platform (GCP).</li>\n</ul>\n<p><strong>Benefits</strong></p>\n<h2><strong>Why You'll Love Working With Us</strong></h2>\n<ul>\n<li>High-Impact Role: Be a key player in a small, agile team building a greenfield project with the potential to transform an industry.</li>\n<li>Modern Technology: Work with a cutting-edge, carefully selected tech stack with a focus on best practices.</li>\n<li>Growth &amp; Learning: Gain deep experience in AI-driven applications, cloud-native architecture, and real-time systems.</li>\n<li>Stability &amp; Vision: Enjoy the energy of a startup environment backed by the resources and stability of a large, successful company.</li>\n<li>Collaborative Culture: We value open communication, teamwork, and a shared passion for building exceptional products.</li>\n</ul>\n<ul>\n<ul>\n<li><strong>Growth and career development</strong></li>\n<ul>\n<li>At Leadtech, we prioritize your growth. Enjoy a flexible career path with personalized internal training and an annual budget for external learning opportunities.</li>\n</ul>\n<li><strong>Work-Life balance</strong></li>\n<ul>\n<li>Benefit from a flexible schedule with flextime and the option of working full remote or from our Barcelona office. Enjoy free Friday afternoons with a 7-hour workday, plus a 35-hour workweek in July and August so you can savor summer!</li>\n</ul>\n<li><strong>Comprehensive benefits</strong></li>\n<ul>\n<li>Competitive salary, full-time permanent contract, and top-tier private health insurance (including dental and psychological services).</li>\n<li>25 days of vacation plus your birthday off, with flexible vacation options—no blackout days!</li>\n</ul>\n<li><strong>Unique Perks</strong></li>\n<ul>\n<li>If you wish to come, in our office in Barcelona you’ll find it complete with free coffee, fresh fruit, snacks, a game room, and a rooftop terrace with stunning Mediterranean views.</li>\n<li>Additional benefits include ticket restaurant and nursery vouchers, paid directly from your gross salary.</li>\n</ul>\n</ul>\n</ul>\n<p>Join us in an environment where you’re free to innovate, learn, and grow alongside passionate professionals. At Leadtech, you’ll tackle exciting challenges and be part of a vibrant team dedicated to delivering exceptional user experiences</p>\n<p>Sounds good? Apply now! We’re looking forward to getting to know you.</p>\n<p><em><strong>Equal Employment Opportunity Employer: </strong></em></p>\n<p>Leadtech is an Equal Employment Opportunity (EEO) Employer, which means we encourage applications from people with different backgrounds, interests, and personal circumstances. Our team welcomes applicants regardless of their race, gender, age, religion, nationality, sexual orientation, gender identity, gender expressión and/or disabilities. All we need is your high energy, skills, and willingness to be a part of a great project!</p>\n<p><em><strong>Location</strong></em></p>\n<p><em>You'll have the flexibility to choose whether you'd like to come to the office every day, from time to time, or work fully remote. We want you to find the best combination for you.</em></p>\n<p><em>If you prefer to be surrounded with amazing people, our exceptional office is in Barcelona’s Blue Building, located right on the city's seafront. Besides our stunning views, you’ll enjoy our office perks such as free fruit, snacks, and coffee and you’ll also be able to take part in our Mario Kart and table tennis competitions.</em></p>\n<p><em>The personal data you provide will be processed in order to manage your candidacy for the corporate selection processes that fit your profile. If you wish, you can exercise your rights of access, rectification or cancellation by writing to our address (Avenida Litoral, 12-14, 5ta planta. Barcelona. 08005) or to the email address protecciondedatos@LeadTech.com.</em></p>",
+    "url": "https://jobicy.com/jobs/145227-senior-full-stack-ai-native-developer",
+    "tags": [],
+    "source": "Jobicy",
+    "_rank": 17,
+    "score": 75,
+    "recommended": true,
+    "job_title": "Senior Full Stack AI Native Developer",
+    "work_mode": "Remoto / Híbrido (Barcelona)",
+    "seniority": "Senior",
+    "salary_detected": false,
+    "salary_estimated": "No informado (Se categoriza como competitivo)",
+    "matching_skills": [
+      "JavaScript/TypeScript",
+      "React",
+      "Node.js",
+      "PostgreSQL",
+      "REST APIs",
+      "Python"
+    ],
+    "missing_skills": [
+      "LangGraph",
+      "LangChain",
+      "LangFuse",
+      "GCP (Google Cloud Platform)",
+      "Model Context Protocol (MCP)"
+    ],
+    "strengths_for_this_role": [
+      "Más de 6 años de experiencia sólida en Full Stack",
+      "Fuerte base en arquitectura backend y frontend",
+      "Capacidad probada de aprendizaje rápido (autodidacta)",
+      "Experiencia con ecosistemas de bases de datos relacionales"
+    ],
+    "weaknesses_for_this_role": [
+      "Falta de experiencia específica en el ecosistema de IA generativa (LangChain/LangGraph)",
+      "Experiencia principal en AWS mientras que el rol requiere GCP",
+      "Carencia de proyectos específicos con LLMs en el stack actual"
+    ],
+    "probability_of_interview": 70,
+    "recommendation": "El candidato es altamente apto por su seniority y dominio técnico. Aunque carece de experiencia en el stack específico de IA (LangChain/LangGraph) y GCP, su perfil de Senior le permite adaptarse rápidamente. Se recomienda resaltar su capacidad autodidacta y experiencia en arquitectura de sistemas.",
+    "cv_focus": "Enfocar el CV en la capacidad de integración de APIs de terceros y arquitectura de sistemas complejos. Mencionar brevemente interés y estudio autodidacta en herramientas de IA.",
+    "cover_letter_focus": "Destacar la 'High Agency' y la adaptabilidad técnica para aprender herramientas de IA (LangChain) en tiempo récord, conectando la experiencia previa en integración de APIs con la necesidad del rol."
   },
   {
     "title": "Java Backend Developer",
     "company": "ClifyX",
     "description": "Position: Java Backend Developer Location: Remote Employment Type: 12 Months Job descriptions: • 7 years of hands on experience in Java backend development • Strong proficiency in Spring boot, Spring MVC • Solid experience with MongoDB • Strong experience in AWS cloud services • Experience integrating LLM / GenAI APIs into applications • Familiarity with Docker and Kubernetes • Strong analytical and problem solving skills",
-    "url": "https://www.adzuna.com/land/ad/5730843504?se=AIHusJFp8RGLEaLh4znBvA&utm_medium=api&utm_source=7acc59fd&v=4AC851F694DE2E01881C107258A8D0559AECAA8F",
+    "url": "https://www.adzuna.com/land/ad/5730843504?se=4p4qj6Rp8RGHcblSVmFK6Q&utm_medium=api&utm_source=7acc59fd&v=4AC851F694DE2E01881C107258A8D0559AECAA8F",
     "tags": [
       "IT Jobs"
     ],
@@ -272,30 +323,30 @@
     "salary_estimated": "No informado",
     "matching_skills": [
       "MongoDB",
+      "AWS",
       "Docker",
       "Kubernetes",
-      "AWS"
+      "Backend Development"
     ],
     "missing_skills": [
       "Java",
       "Spring Boot",
-      "Spring MVC",
-      "LLM / GenAI API integration"
+      "Spring MVC"
     ],
     "strengths_for_this_role": [
       "Más de 6 años de experiencia profesional",
-      "Sólida base en arquitecturas backend",
-      "Experiencia con ecosistemas Cloud y orquestación de contenedores"
+      "Experiencia sólida en arquitectura backend",
+      "Dominio de ecosistema cloud (AWS) y contenedores (Docker/K8s)",
+      "Experiencia con bases de datos NoSQL (MongoDB)"
     ],
     "weaknesses_for_this_role": [
-      "Carencia total de experiencia en Java y el ecosistema Spring",
-      "El stack tecnológico principal del candidato (PHP/Node.js/Python) no coincide con el requerimiento central",
-      "Falta de experiencia específica en integración de LLM/GenAI"
+      "El stack principal solicitado (Java/Spring) es ajeno a su perfil actual (PHP/Node/Python)",
+      "Falta de experiencia comprobable en el ecosistema Java, lo cual es crítico para un rol Senior"
     ],
-    "probability_of_interview": 35,
-    "recommendation": "No recomendable. Aunque Augusto es un perfil senior fuerte en DevOps y Backend, el requerimiento central de esta posición es Java/Spring Boot, tecnologías en las que no cuenta con experiencia previa. La probabilidad de ser seleccionado frente a candidatos especialistas en Java es baja.",
-    "cv_focus": "Enfocarse en resaltar la capacidad de aprendizaje rápido de nuevos lenguajes y la experiencia previa en microservicios, independientemente del lenguaje.",
-    "cover_letter_focus": "Destacar la arquitectura y los fundamentos de ingeniería (SOLID, TDD) más que la sintaxis de Java, enfatizando la experiencia con el stack de infraestructura (AWS, K8s) que es común en ambos perfiles."
+    "probability_of_interview": 30,
+    "recommendation": "No recomendable. Aunque el perfil de Augusto es Senior y tiene experiencia transferible en infraestructura, el core de la oferta es Java/Spring, tecnologías en las que no cuenta con experiencia. Aplicar sería una pérdida de tiempo a menos que Augusto esté dispuesto a realizar un reskilling inmediato hacia Java.",
+    "cv_focus": "Destacar la capacidad de aprendizaje rápido y experiencia en microservicios, aunque no sea en Java, para intentar compensar la falta de stack específico.",
+    "cover_letter_focus": "Enfatizar su experiencia en arquitectura backend, escalabilidad en AWS y su capacidad para integrar nuevas tecnologías como LLMs/GenAI, minimizando la brecha técnica con Java."
   },
   {
     "title": "Full Stack Laravel / React Developer",
@@ -307,39 +358,37 @@
     ],
     "source": "Adzuna",
     "_rank": 16,
-    "score": 75,
-    "recommended": true,
+    "score": 65,
+    "recommended": false,
     "job_title": "Full Stack Laravel / React Developer",
     "work_mode": "Remote",
-    "seniority": "Mid-Level/Senior",
+    "seniority": "Senior",
     "salary_detected": false,
-    "salary_estimated": "Not specified",
+    "salary_estimated": "Not disclosed",
     "matching_skills": [
       "PHP",
       "Laravel",
       "React",
       "MySQL",
-      "JavaScript",
-      "CSS",
-      "Git"
+      "JavaScript"
     ],
     "missing_skills": [
-      "Fluent English (Candidate has intermediate)"
+      "Fluent English (Mandatory)"
     ],
     "strengths_for_this_role": [
-      "Experiencia técnica superior a los 3 años requeridos en el stack principal (PHP/Laravel/React).",
-      "Perfil Full Stack alineado perfectamente con el título del puesto.",
-      "Amplia experiencia en el ecosistema web requerido."
+      "Experiencia técnica de 6 años supera ampliamente los 3 años requeridos",
+      "Dominio total del stack tecnológico principal (Laravel/React)",
+      "Experiencia comprobada en entornos profesionales"
     ],
     "weaknesses_for_this_role": [
-      "Requisito de Inglés fluido: El candidato posee nivel intermedio, lo cual es una brecha respecto a la exigencia de la oferta.",
-      "Salario no publicado: Existe riesgo de que no alcance el mínimo deseado (ARS 2M).",
-      "Modalidad Part-time: La oferta especifica part-time, lo cual podría no alinearse con la expectativa de ingreso mensual si el sueldo por hora no es competitivo."
+      "El nivel de inglés requerido es 'Fluido', mientras que el candidato posee 'Intermedio'",
+      "La oferta es 'Part-time', lo cual no está alineado explícitamente con las expectativas del candidato",
+      "Requisito académico de grado en Computer Science podría ser una barrera si no se posee"
     ],
-    "probability_of_interview": 70,
-    "recommendation": "Recomendable aplicar, destacando la experiencia sólida en el stack técnico. Es vital mencionar en la cover letter la disposición para mejorar la fluidez en inglés rápidamente o demostrar que el nivel intermedio es suficiente para la comunicación técnica diaria. Al ser una empresa de USA, se debe validar que la compensación horaria cumpla con las expectativas salariales.",
-    "cv_focus": "Enfatizar proyectos realizados con Laravel y React, destacando la capacidad de trabajar en equipos remotos de forma autónoma.",
-    "cover_letter_focus": "Destacar la experiencia técnica y la capacidad de aprendizaje rápido, mencionando que, aunque el inglés es intermedio, se tiene experiencia técnica previa interactuando con equipos angloparlantes."
+    "probability_of_interview": 40,
+    "recommendation": "No recomendable principalmente por la barrera del idioma. La oferta exige inglés fluido para una empresa de USA, mientras que el perfil es intermedio. Además, el formato part-time podría no satisfacer la expectativa salarial de ARS 2.000.000 mínimos si no se paga una tarifa horaria muy elevada.",
+    "cv_focus": "Enfocarse en resaltar la experiencia senior en Laravel y React, y cualquier proyecto donde el inglés haya sido utilizado en comunicación técnica directa.",
+    "cover_letter_focus": "Explicar claramente la capacidad técnica y la disposición para trabajar bajo estándares internacionales, reconociendo el desafío del idioma y demostrando voluntad de aprendizaje continuo."
   },
   {
     "title": "Senior Full Stack Developer – Node.js/React.js (Linux)",
@@ -361,29 +410,29 @@
     "matching_skills": [
       "Node.js",
       "React.js",
-      "JavaScript",
       "MySQL",
-      "NoSQL (MongoDB)",
+      "NoSQL",
       "CI/CD",
       "DevOps",
       "Git"
     ],
     "missing_skills": [
-      "Especificación explícita de Linux (aunque el candidato tiene experiencia en Docker/Nginx/Apache que implica manejo de sistemas Linux)"
+      "Experiencia específica en Linux (aunque es transferible desde el dominio de servidor)"
     ],
     "strengths_for_this_role": [
-      "Experiencia técnica altamente alineada con el stack Node.js/React solicitado.",
-      "Seniority de 6+ años que encaja perfectamente con el requerimiento.",
-      "Conocimiento en CI/CD y DevOps, lo cual es un diferenciador muy valorado para este rol.",
-      "Dominio de bases de datos relacionales y no relacionales que cubre el requerimiento de MySQL y NoSQL."
+      "Coincidencia exacta con el stack tecnológico principal (Node.js/React)",
+      "Experiencia senior alineada con el requisito de 6+ años",
+      "Dominio de herramientas de despliegue y DevOps",
+      "Versatilidad técnica (Full Stack)"
     ],
     "weaknesses_for_this_role": [
-      "No se menciona el salario en la oferta, lo que impide asegurar que supere el mínimo deseado."
+      "No se especifica el rango salarial en la oferta",
+      "Se requiere validar si el nivel de inglés es suficiente para una corporación global como Siemens"
     ],
-    "probability_of_interview": 85,
-    "recommendation": "Aplicar inmediatamente. El perfil de Augusto es un 'match' técnico casi perfecto para las necesidades de Siemens. La combinación de Backend (Node.js), Frontend (React) y capacidades DevOps lo convierte en un candidato ideal.",
-    "cv_focus": "Resaltar los proyectos donde se utilizó el stack MERN/Node.js+React y enfatizar la experiencia en entornos Linux y pipelines de CI/CD.",
-    "cover_letter_focus": "Enfocarse en la capacidad de desarrollar productos de software a gran escala y la habilidad para resolver problemas complejos de debugging, alineado con la cultura de ingeniería de una empresa como Siemens."
+    "probability_of_interview": 90,
+    "recommendation": "Aplicar inmediatamente. El perfil de Augusto encaja perfectamente con el stack tecnológico y los años de experiencia solicitados. La experiencia en DevOps y CI/CD es un factor diferenciador clave para Siemens.",
+    "cv_focus": "Resaltar los proyectos donde se haya trabajado bajo arquitecturas de microservicios y despliegues en entornos Linux/Cloud, enfatizando la experiencia previa en Node.js y React.",
+    "cover_letter_focus": "Enfocarse en la capacidad de desarrollar productos de software robustos y escalables, destacando la experiencia con metodologías ágiles y el ciclo de vida completo de CI/CD."
   },
   {
     "title": "Full Stack Developer",
@@ -399,7 +448,7 @@
     "recommended": true,
     "job_title": "Full Stack Developer",
     "work_mode": "No especificado",
-    "seniority": "No especificado (Asumido como Senior/Mid-level)",
+    "seniority": "Senior/Mid-Level",
     "salary_detected": false,
     "salary_estimated": "No informado",
     "matching_skills": [
@@ -408,7 +457,8 @@
       "React",
       "Vue.js",
       "PostgreSQL",
-      "NoSQL Databases"
+      "NoSQL (MongoDB)",
+      "Microservices"
     ],
     "missing_skills": [
       "Java",
@@ -416,20 +466,108 @@
       "Angular"
     ],
     "strengths_for_this_role": [
-      "Experiencia sólida en múltiples lenguajes de backend (Node.js, Python) requeridos por la oferta.",
-      "Dominio de frameworks frontend solicitados (React, Vue.js).",
-      "Experiencia previa en arquitectura de microservices y bases de datos relacionales/NoSQL.",
-      "Perfil Full Stack alineado con 6+ años de experiencia."
+      "El stack tecnológico principal (Node.js, Python, React, Vue) es coincidente.",
+      "Experiencia sólida en arquitectura de microservicios y bases de datos relacionales/NoSQL.",
+      "Seniority (6+ años) cubre perfectamente las expectativas para el rol."
     ],
     "weaknesses_for_this_role": [
-      "La oferta menciona Java y .NET, tecnologías que no forman parte del stack principal del candidato.",
-      "No se especifica el salario, lo que representa un riesgo potencial.",
-      "La descripción está en neerlandés, lo que podría implicar un requisito de idioma no contemplado en el perfil inicial."
+      "La oferta requiere Java y .NET, lenguajes que no están en el perfil del candidato.",
+      "El idioma de la descripción (neerlandés) sugiere que podría requerirse dominio de ese idioma o inglés avanzado, lo cual supera el nivel intermedio del candidato."
     ],
-    "probability_of_interview": 85,
-    "recommendation": "Muy recomendable. El perfil de Augusto es altamente compatible técnicamente con la mayoría de los requerimientos de la oferta. Aunque la oferta menciona Java/.NET, la experiencia transferible del candidato en backend es suficiente para compensar estas brechas. Se recomienda contactar para validar el rango salarial y las expectativas de idioma antes de aplicar.",
-    "cv_focus": "Resaltar proyectos que involucren microservicios y escalabilidad, enfatizando la experiencia con Node.js y Python como pilares del backend.",
-    "cover_letter_focus": "Destacar la capacidad de aprendizaje rápido para adaptarse a otros lenguajes (como .NET o Java) y la amplia experiencia con metodologías ágiles y CI/CD."
+    "probability_of_interview": 75,
+    "recommendation": "Muy recomendable. Tu perfil técnico es altamente compatible con el stack de desarrollo principal. Aunque mencionan Java y .NET, tu experiencia sólida en Node.js y Python suele ser suficiente para compensar si el enfoque del equipo es flexible. Verifica los requisitos de idioma antes de aplicar.",
+    "cv_focus": "Resaltar tu experiencia en microservicios y despliegues en la nube, ya que es el núcleo del stack solicitado.",
+    "cover_letter_focus": "Enfocarte en tu versatilidad para aprender nuevos lenguajes rápidamente (como Java/.NET) gracias a tu sólida base en arquitecturas backend y tu experiencia multi-lenguaje."
+  },
+  {
+    "title": "Principal DevOps Engineer (Poland Remote)",
+    "company": "Turnitin, LLC",
+    "description": "<h2>Company Description</h2>\n<p>When you join Turnitin, you'll be welcomed into a company that is a recognized innovator in global education. For over 25 years, Turnitin has partnered with educators and institutions to develop learning integrity solutions that recognize the enduring value of critical thinking in a rapidly changing world. Over 16,000 academic institutions, publishers, and corporations use our services in more than 185 countries around the world: Turnitin Feedback Studio, Clarity, Originality, Gradescope, ExamSoft, Similarity, and iThenticate. Protecting the value of an authentic education is at the heart of who we are.</p>\n<p>Experience a remote-first culture that empowers you to work with purpose and accountability in a way that best suits you, supported by a comprehensive package that prioritizes your overall well-being. Our diverse community of colleagues are all unified by a shared desire to make a difference in education.</p>\n<p>Turnitin is a global organization with team members in over 35 countries including the United States, Mexico, United Kingdom, Australia, Japan, India, and the Philippines.</p>\n<h2>Job Description</h2>\n<p>We are seeking a <strong>Principal DevOps Engineer </strong>to serve as a technical leader within our DevOps organization.</p>\n<p>This role partners closely with other senior technical leaders to translate strategic platform direction into reliable, scalable, and developer-friendly infrastructure capabilities. The Principal will lead the technical execution of platform initiatives, elevate engineering standards, and drive measurable improvements in reliability, cost efficiency, and delivery velocity.</p>\n<p>This is a hands-on leadership role. You will design and implement platform capabilities across our serverless and Kubernetes environments, guide senior engineers, and influence engineering practices across teams.</p>\n<p><strong>Key Responsibilities and Outputs:</strong></p>\n<p><strong>Technical Leadership &amp; Execution</strong></p>\n<ul>\n<li>Partner with Architects to implement and operationalize platform strategy.</li>\n<li>Lead the technical design and delivery of platform capabilities across:\n<ul>\n<li>Serverless-first AWS workloads</li>\n<li>Kubernetes (EKS) environments</li>\n</ul>\n</li>\n<li>Break down large architectural initiatives into executable milestones.</li>\n<li>Guide platform implementation patterns and reusable modules.</li>\n</ul>\n<p><strong>Reliability &amp; Operational Improvement</strong></p>\n<ul>\n<li>Drive systemic improvements that reduce incident frequency and severity.</li>\n<li>Strengthen observability standards (logging, metrics, tracing).</li>\n<li>Support adoption of Product focused SRE frameworks across teams.</li>\n<li>Improve deployment safety, change management, and incident response practices.</li>\n</ul>\n<p><strong>Platform Evolution</strong></p>\n<ul>\n<li>Improve CI/CD automation and deployment workflows.</li>\n<li>Contribute to Kubernetes cluster design evolution and networking patterns.</li>\n<li>Improve logging pipelines, cost visibility, tagging standards, and platform guardrails.</li>\n<li>Support platform modernization efforts with a focus on simplification and predictability.</li>\n</ul>\n<p><strong>Engineering Enablement</strong></p>\n<ul>\n<li>Improve developer experience across platform offerings.</li>\n<li>Establish clear golden paths for deployment and monitoring.</li>\n<li>Contribute to DORA metric visibility and engineering performance improvements.</li>\n<li>Support responsible AI tooling adoption in our workflows.</li>\n</ul>\n<p><strong>Influence &amp; Mentorship</strong></p>\n<ul>\n<li>Mentor senior engineers and elevate platform engineering standards.</li>\n<li>Lead technical discussions and design reviews.</li>\n<li>Make tradeoffs visible and articulate technical risk clearly.</li>\n<li>Reinforce disciplined intake and prioritization practices to protect strategic capacity.</li>\n</ul>\n<h2>Qualifications</h2>\n<p><strong>Experience:</strong></p>\n<ul>\n<li>8–12+ years in infrastructure, SRE, or platform engineering.</li>\n<li>Experience operating serverless and Kubernetes environments at scale.</li>\n<li>Proven track record improving reliability and reducing operational toil.</li>\n<li>Experience collaborating closely with multiple engineering teams.</li>\n</ul>\n<p><strong>Technical Expertise:</strong></p>\n<ul>\n<li>Strong AWS expertise (Lambda, API Gateway, Step Functions, DynamoDB, S3, IAM, VPC).</li>\n<li>Strong Kubernetes/EKS experience including networking and observability.</li>\n<li>Advanced Infrastructure as Code (Terraform preferred).</li>\n<li>Strong CI/CD pipeline design experience.</li>\n<li>Experience with observability tooling (OpenTelemetry, OpenSearch, Prometheus/Grafana, CloudWatch).</li>\n<li>Strong understanding of distributed systems and reliability engineering.</li>\n</ul>\n<p><strong>Nice to Have:</strong></p>\n<ul>\n<li>Experience implementing DORA metrics.</li>\n<li>Experience supporting SRE models and incident reduction initiatives.</li>\n<li>Experience improving developer onboarding and platform UX.</li>\n<li>Experience writing tools in scripting languages such as Python, Node.js, or similar.</li>\n<li>Experience evaluating AI-assisted development tooling safely.</li>\n</ul>\n<p><strong>Tii Elements:</strong></p>\n<ul>\n<li>Resourcefulness</li>\n<li>Collaboration &amp; Influencing</li>\n<li>Quality Focus</li>\n</ul>\n<h2>Additional Information</h2>\n<p>The <strong>expected annual base salary range</strong> for this position is: <strong>PLN 308,025/year</strong> to <strong>PLN 513,375/year</strong>. This position is bonus eligible.</p>\n<p>Actual compensation will be provided in writing at the time of offer, if extended, and is determined by work location and a range of other relevant factors, including but not limited to: experience, skills, degrees, licensures, certifications, and other job-related factors. Internal equity, market and organizational factors are also considered.</p>\n<p><strong>Total Rewards @ Turnitin</strong><br />\nAt Turnitin, we believe Total Rewards go far beyond pay. While salary, bonus, or commission are important, they’re only part of the value you receive in exchange for your work.</p>\n<p>Beyond compensation, you’ll experience the intrinsic rewards of unleashing your potential and making a positive impact on global education. You’ll also thrive in a culture free of politics, surrounded by humble, inclusive, and collaborative teammates.</p>\n<p>In addition, our extrinsic rewards include generous time off and health and wellness programs that provide choice, flexibility, and a safety net for life’s challenges. You’ll also enjoy a remote-first culture that empowers you to work with purpose and accountability in the way that suits you best, all supported by a comprehensive package that prioritizes your overall well-being.</p>\n<p><strong>Our Mission</strong> is to ensure the integrity of global education and meaningfully improve learning outcomes.</p>\n<p><strong>Our Values</strong> underpin everything we do.</p>\n<ul>\n<li><strong>Customer Centric: </strong>Our mission is focused on improving learning outcomes; we do this by putting educators and learners at the center of everything we do.</li>\n<li><strong>Passion for Learning:</strong> We are committed to our own learning and growth internally. And we support education and learning around the globe.</li>\n<li><strong>Integrity:</strong> Integrity is the heartbeat of Turnitin—it is the core of our products, the way we treat each other, and how we work with our customers and vendors.</li>\n<li><strong>Action &amp; Ownership:</strong> We have a bias for action. We act like owners. We are willing to change even when it’s hard.</li>\n<li><strong>One Team: </strong>We strive to break down silos, collaborate effectively, and celebrate each others' successes.</li>\n<li><strong>Global Mindset:</strong> We consider different perspectives and celebrate diversity. We are one team. The work we do has an impact on the world.</li>\n</ul>\n<p><strong>Global Benefits</strong></p>\n<ul>\n<li>Remote First Culture</li>\n<li>Health Care Coverage</li>\n<li>Education Reimbursement*Competitive Paid Time Off </li>\n<li>Self-Care Days</li>\n<li>National Holidays</li>\n<li>2 Founder Days + Juneteenth Observed</li>\n<li>Paid Volunteer Time Off</li>\n<li>Charitable Contribution Match</li>\n<li>Monthly Wellness or Home Office Reimbursement</li>\n<li>Access to Employee Assistance Program (mental health platform)</li>\n<li>Parental Leave</li>\n<li>Retirement Plan with match/contribution</li>\n</ul>\n<p><strong>Seeing Beyond the Job Ad</strong><br />\nAt Turnitin, we recognize it’s unrealistic for candidates to fulfill 100% of the criteria in a job ad. We encourage you to apply if you meet the majority of the requirements because we know that skills evolve over time. If you’re willing to learn and unleash your potential alongside us, join our team!</p>\n<p>Turnitin, LLC is an Equal Opportunity Employer- vets/disabled. </p>",
+    "url": "https://jobicy.com/jobs/145949-principal-devops-engineer-poland-remote",
+    "tags": [],
+    "source": "Jobicy",
+    "_rank": 15,
+    "score": 55,
+    "recommended": false,
+    "job_title": "Principal DevOps Engineer",
+    "work_mode": "Remote",
+    "seniority": "Principal",
+    "salary_detected": true,
+    "salary_estimated": "PLN 308,025 - 513,375 anuales (aprox. USD 75k - 125k)",
+    "matching_skills": [
+      "AWS",
+      "Kubernetes",
+      "Docker",
+      "Python",
+      "Node.js",
+      "CI/CD"
+    ],
+    "missing_skills": [
+      "8-12+ años de experiencia (el candidato tiene 6+)",
+      "Experiencia en nivel Principal/Arquitecto",
+      "Terraform (especificado como preferido)",
+      "Profundidad en SRE a nivel estratégico"
+    ],
+    "strengths_for_this_role": [
+      "Dominio de tecnologías core (AWS, K8s, CI/CD)",
+      "Experiencia con lenguajes de scripting (Python/Node.js)",
+      "Familiaridad con entornos distribuidos"
+    ],
+    "weaknesses_for_this_role": [
+      "Déficit de años de experiencia (solicitan 8-12, candidato tiene 6)",
+      "El rol es de nivel 'Principal', lo cual requiere una trayectoria de liderazgo técnico superior a la actual del candidato",
+      "Falta de mención explícita de experiencia en infraestructura de gran escala compleja y gestión de SRE estratégico"
+    ],
+    "probability_of_interview": 20,
+    "recommendation": "No es recomendable aplicar. La posición es de nivel 'Principal', lo que implica una responsabilidad de liderazgo técnico que excede el seniority actual del candidato (6 años vs 8-12 solicitados). Es un salto de carrera demasiado grande que probablemente resulte en un rechazo automático por ATS o revisión humana.",
+    "cv_focus": "Enfocarse en resaltar proyectos de automatización, escalabilidad y liderazgo de equipos de DevOps si se decide intentar la aplicación.",
+    "cover_letter_focus": "Si decide aplicar, enfatizar la capacidad de aprendizaje rápido y resultados medibles en CI/CD y AWS, aunque los años de experiencia sean menores a los requeridos."
+  },
+  {
+    "title": "DevOps Engineer",
+    "company": "PSI CRO",
+    "description": "<h2>Company Description</h2>\n<p>PSI is a leading Contract Research Organization (CRO) with 30 years of experience in the pharmaceutical industry. Originated in Switzerland, PSI is a privately owned, full-service CRO with a global reach, supporting clinical trials across multiple countries and continents. Our reputation for being highly selective about the projects we undertake highlights our commitment to delivering high-quality, timely services across a broad spectrum of therapeutic indications.</p>\n<p>At PSI, we foster an environment where a diverse range of colleagues feel welcomed and valued. Our inclusive culture is a cornerstone of our success, enabling us to attract and retain top talent globally.</p>\n<p>We are not just about conducting clinical trials; we are about building a community where every team member has the opportunity to thrive and contribute to groundbreaking advancements in the pharmaceutical industry.</p>\n<h2>Job Description</h2>\n<p>In this role, you will be responsible for building, maintaining, and optimizing infrastructure, CI/CD pipelines, and deployment processes across multiple environments.</p>\n<p><strong>Key Responsibilities</strong></p>\n<ul>\n<li>Troubleshoot system issues using logs, diagnostics, and monitoring tools</li>\n<li>Develop and maintain automation scripts using PowerShell and Bash</li>\n<li>Design and manage CI/CD pipelines for continuous integration and deployment</li>\n<li>Configure and maintain web servers (IIS) and support application hosting environments</li>\n<li>Deploy, manage, and scale applications in Azure Kubernetes Service (AKS)</li>\n<li>Build and maintain Docker images, Docker files, and containerized environments</li>\n<li>Implement and maintain monitoring, logging, and observability solutions (Grafana, Prometheus, ELK, etc.)</li>\n<li>Collaborate with development teams to ensure smooth release cycles and reliable deployments</li>\n<li>Contribute to improving system architecture and adopting best DevOps practices</li>\n</ul>\n<h2>Qualifications</h2>\n<ul>\n<li>BSc/BA in computer science, software engineering or relevant discipline</li>\n<li>Full working proficiency in English</li>\n<li>At least 3 years of experience as a DevOps Engineer</li>\n<li>Windows and Linux administration skills</li>\n<li>Solid understanding of system internals, troubleshooting, and log analysis</li>\n<li>Knowledge of TCP/IP, DNS, HTTP/HTTPS, load balancing, and SSL/TLS</li>\n<li>Proficiency with Git (branching, merging, rebasing) and modern workflows</li>\n<li>Experience with Azure DevOps and building CI/CD pipelines</li>\n<li>Hands-on experience with Docker and Kubernetes (AKS)\n<ul>\n<li>Helm and cert-manager are a plus</li>\n<li>Familiarity with container registries</li>\n</ul>\n</li>\n<li>Experience managing IIS (Nginx/Tomcat is a plus)</li>\n<li>Working knowledge of MS SQL for support and diagnostics</li>\n<li>Programming/scripting:\n<ul>\n<li>Required: .NET (C# / ASP.NET) for understanding application build and deployment processes</li>\n<li>Preferred: Node.js to enable development of extensions for Azure DevOps</li>\n<li>Nice to have: Python or Go for creating supporting tools and scripts</li>\n</ul>\n</li>\n<li>Experience with monitoring and observability tools (Grafana, Prometheus, ELK, Zabbix)</li>\n<li>Understanding of modern architectures: monolith, microservices, event-driven, serverless</li>\n</ul>\n<h2>Additional Information</h2>\n<ul>\n<li>Stable, privately-owned company, organically growing since 1995</li>\n<li>Opportunities to work remotely in Latvia</li>\n<li>Intensive induction program, technical and industry-related trainings for an optimal start and continuous development</li>\n<li>Diverse projects that include but are not limited to web and desktop apps, ERP system, BPM system, document management system and more</li>\n<li>Friendly and supportive atmosphere in a committed team</li>\n<li>International environment, with colleagues around the world</li>\n<li>Opportunities to quickly see the results of your work</li>\n</ul>",
+    "url": "https://jobicy.com/jobs/145786-devops-engineer-3",
+    "tags": [],
+    "source": "Jobicy",
+    "_rank": 15,
+    "score": 75,
+    "recommended": true,
+    "job_title": "DevOps Engineer",
+    "work_mode": "Remoto (Latvia)",
+    "seniority": "Senior",
+    "salary_detected": false,
+    "salary_estimated": "No informado",
+    "matching_skills": [
+      "DevOps",
+      "Docker",
+      "Kubernetes",
+      "CI/CD",
+      "Node.js",
+      "Python",
+      "Git"
+    ],
+    "missing_skills": [
+      "Azure / Azure DevOps",
+      "PowerShell",
+      ".NET / C#",
+      "IIS Administration"
+    ],
+    "strengths_for_this_role": [
+      "Sólida experiencia en Docker y Kubernetes (especialmente relevante por la migración de conceptos de gestión de contenedores).",
+      "Dominio de herramientas de CI/CD, fundamental para el rol.",
+      "Experiencia transferible en infraestructura y scripting (Python/Node.js).",
+      "Más de 6 años de experiencia total, superando los 3 años requeridos."
+    ],
+    "weaknesses_for_this_role": [
+      "Fuerte enfoque en Azure y el ecosistema Microsoft (.NET/IIS/PowerShell), donde el candidato tiene menos experiencia directa.",
+      "El requisito de 'Full working proficiency in English' podría suponer un reto si el nivel del candidato es solo intermedio.",
+      "Ubicación geográfica: La oferta especifica 'Remotely in Latvia', lo cual suele restringir la contratación a residentes de la UE."
+    ],
+    "probability_of_interview": 70,
+    "recommendation": "Es una oferta recomendable para aplicar, aunque hay una brecha tecnológica en el stack de Microsoft (Azure/.NET). La experiencia base en DevOps y contenedores es muy sólida. Se debe verificar si la empresa acepta candidatos fuera de Letonia.",
+    "cv_focus": "Resaltar los proyectos donde se haya gestionado infraestructura en la nube, pipelines de CI/CD complejos y automatización de despliegues, incluso si no fueron en entornos Azure.",
+    "cover_letter_focus": "Enfatizar la capacidad de adaptación técnica, mencionando que, aunque el background principal es Linux/AWS/Node.js, la lógica de automatización y orquestación de Kubernetes es altamente transferible a Azure (AKS)."
   },
   {
     "title": "Backend Developer Jr",
@@ -441,7 +579,7 @@
     ],
     "source": "Adzuna",
     "_rank": 14,
-    "score": 65,
+    "score": 62,
     "recommended": false,
     "job_title": "Backend Developer Jr",
     "work_mode": "No especificado",
@@ -456,24 +594,24 @@
       "APIs REST"
     ],
     "missing_skills": [
-      "Express (tecnología específica)",
+      "PostGIS",
       "Prisma ORM",
-      "PostGIS"
+      "WebSockets"
     ],
     "strengths_for_this_role": [
-      "Amplia experiencia técnica que excede los requisitos junior",
-      "Dominio de herramientas de infraestructura como Docker",
-      "Conocimiento sólido en bases de datos relacionales"
+      "Dominio sólido de Node.js y bases de datos",
+      "Experiencia previa con contenedores (Docker)",
+      "Amplio background en desarrollo backend que supera los requisitos del rol"
     ],
     "weaknesses_for_this_role": [
-      "El nivel de seniority (Junior) es inferior al perfil del candidato (Senior)",
-      "Riesgo de subempleo y falta de desafío profesional",
-      "Posible brecha salarial al ser una posición Junior"
+      "Sobrecalificación significativa (Candidato Senior vs Rol Junior)",
+      "Diferencia salarial potencial (es probable que el presupuesto para un Jr esté por debajo del mínimo esperado)",
+      "Desalineación de carrera (el candidato busca crecimiento, este rol es de nivel de entrada)"
     ],
-    "probability_of_interview": 95,
-    "recommendation": "No recomendable. Aunque el candidato es altamente compatible técnicamente, la oferta es para un perfil Junior. Con más de 6 años de experiencia, el candidato está sobrecalificado, lo que probablemente resulte en una oferta salarial insuficiente y falta de motivación a largo plazo.",
-    "cv_focus": "Enfatizar proyectos que involucren arquitecturas escalables y liderazgo técnico para justificar un rol Senior.",
-    "cover_letter_focus": "Si decide aplicar, resaltar el interés en mentoría o arquitectura, pero es preferible buscar posiciones Senior/Lead para aprovechar su seniority actual."
+    "probability_of_interview": 75,
+    "recommendation": "No recomendable. Aunque el candidato cumple con el stack técnico, la oferta es para un perfil Junior. Es muy probable que el presupuesto ofrecido sea inferior a los ARS 2.000.000 y el nivel de complejidad del trabajo no aproveche la experiencia de 6 años del candidato.",
+    "cv_focus": "No aplicar a menos que sea una necesidad económica urgente o la empresa tenga una proyección de crecimiento acelerada.",
+    "cover_letter_focus": "Si decide aplicar, enfatizar la capacidad de mentoría y la eficiencia en la implementación de arquitecturas que superan las expectativas de un perfil Junior."
   },
   {
     "title": "Desarrollador Full Stack (Node.js & AWS)",
@@ -485,35 +623,75 @@
     ],
     "source": "Adzuna",
     "_rank": 14,
-    "score": 95,
+    "score": 85,
     "recommended": true,
     "job_title": "Desarrollador Full Stack (Node.js & AWS)",
     "work_mode": "No especificado",
-    "seniority": "Senior/SSR",
+    "seniority": "No especificado (Asumido SSR/Senior por el stack)",
     "salary_detected": false,
     "salary_estimated": "No informado",
     "matching_skills": [
       "Node.js",
       "AWS",
-      "Frontend",
-      "Backend",
-      "DevOps"
+      "Full Stack Development",
+      "DevOps practices"
     ],
     "missing_skills": [],
     "strengths_for_this_role": [
-      "Experiencia sólida de 6+ años que permite cubrir el rol Full Stack con solvencia.",
-      "Stack tecnológico perfectamente alineado con los requisitos del anuncio (Node.js y AWS).",
-      "Perfil polivalente capaz de cubrir la integración de servicios y las prácticas DevOps mencionadas.",
-      "Experiencia con metodologías ágiles y buenas prácticas (SOLID, TDD, CI/CD) muy valorada en empresas de este tipo."
+      "Experiencia sólida en el stack solicitado (Node.js)",
+      "Habilidades DevOps (Docker, Kubernetes) altamente transferibles a la infraestructura AWS",
+      "Perfil versátil que cubre los tres pilares solicitados: Frontend, Backend y DevOps"
     ],
     "weaknesses_for_this_role": [
-      "La oferta no especifica el rango salarial, lo cual requiere validación en la primera entrevista.",
-      "No se menciona explícitamente la modalidad de trabajo, aunque el candidato está abierto a cualquier esquema."
+      "Falta de información sobre el rango salarial",
+      "Ambigüedad en la modalidad de trabajo (Remoto/Híbrido)"
     ],
-    "probability_of_interview": 90,
-    "recommendation": "Aplicar inmediatamente. El perfil de Augusto es un 'perfect match' para esta vacante, ya que posee el stack técnico exacto y la experiencia integral que busca la empresa.",
-    "cv_focus": "Resaltar los proyectos donde se utilizó Node.js en conjunto con despliegues en AWS y automatización de pipelines (CI/CD).",
-    "cover_letter_focus": "Enfocarse en la capacidad de tomar responsabilidad sobre el ciclo de vida completo del desarrollo y la experiencia en DevOps para optimizar soluciones en la nube."
+    "probability_of_interview": 85,
+    "recommendation": "Muy recomendable. El perfil de Augusto es un 'match' técnico casi perfecto para los requerimientos de la oferta. Al no haber información salarial ni de modalidad, se recomienda consultar estos puntos en la primera toma de contacto.",
+    "cv_focus": "Resaltar los proyectos donde se integró Node.js con servicios de AWS y demostrar la capacidad de orquestación en la nube.",
+    "cover_letter_focus": "Enfatizar la experiencia de 6 años aportando soluciones end-to-end, destacando el dominio de prácticas de DevOps y CI/CD que el rol demanda para la mejora continua."
+  },
+  {
+    "title": "Senior Fullstack Developer (PHP  Python  Vue/React) – AI Agents",
+    "company": "Sesame",
+    "description": "¡Hola!  En Sesame estamos construyendo la próxima generación de nuestra plataforma de RRHH con sistemas multi-agente que automatizan procesos reales en producción — no prototipos, no demos, no notebooks. Buscamos un/a Senior Fullstack Engineer con experiencia sólida en Symfony (o Laravel con disposición a migrar) , Python con FastAPI , y Vue 3 / React en frontend, que haya construido y desplegado agentes autónomos en producción y quiera liderar la evolución de nuestra plataforma de IA aplicada.…",
+    "url": "https://www.adzuna.es/details/5718935012?utm_medium=api&utm_source=7acc59fd",
+    "tags": [
+      "Unknown"
+    ],
+    "source": "Adzuna",
+    "_rank": 14,
+    "score": 92,
+    "recommended": true,
+    "job_title": "Senior Fullstack Developer (PHP Python Vue/React) – AI Agents",
+    "work_mode": "No especificado",
+    "seniority": "Senior",
+    "salary_detected": false,
+    "salary_estimated": "No informado",
+    "matching_skills": [
+      "PHP",
+      "Laravel",
+      "Python",
+      "Vue.js",
+      "React"
+    ],
+    "missing_skills": [
+      "Experiencia específica en sistemas multi-agente/IA en producción"
+    ],
+    "strengths_for_this_role": [
+      "El stack tecnológico coincide casi perfectamente con la experiencia del candidato",
+      "6+ años de experiencia cumplen con el requisito Senior",
+      "Dominio de Laravel y disposición para trabajar con el ecosistema propuesto",
+      "Experiencia en Backend y Frontend, ideal para el rol Fullstack"
+    ],
+    "weaknesses_for_this_role": [
+      "No se menciona experiencia previa en desarrollo de Agentes de IA, aunque es una tecnología emergente",
+      "El salario no está publicado, por lo que existe riesgo de no cumplir la expectativa mínima"
+    ],
+    "probability_of_interview": 85,
+    "recommendation": "Aplicar inmediatamente. El perfil técnico es un 'match' muy fuerte para el stack principal. La empresa busca resolver problemas de IA en producción, por lo que es vital resaltar la experiencia en arquitectura escalable y despliegue (Docker/Kubernetes/CI/CD) durante el proceso.",
+    "cv_focus": "Enfatizar proyectos donde se hayan integrado APIs de terceros, automatización de procesos y el uso de tecnologías en entornos de alta disponibilidad.",
+    "cover_letter_focus": "Destacar la capacidad de adaptación técnica (específicamente la migración/adaptación de Laravel a entornos con Python/FastAPI) y el interés en la arquitectura de sistemas autónomos."
   },
   {
     "title": "Senior Full Stack Laravel Developer",
@@ -533,35 +711,36 @@
     "salary_detected": false,
     "salary_estimated": "No informado",
     "matching_skills": [
-      "PHP",
       "Laravel",
+      "PHP",
       "MySQL",
-      "Vue.js",
       "JavaScript",
+      "Vue.js",
       "Git"
     ],
     "missing_skills": [
-      "Tailwind (mencionado en la oferta, Augusto no lo listó explícitamente pero es transferible)"
+      "Tailwind",
+      "Sass"
     ],
     "strengths_for_this_role": [
-      "Experiencia sólida (6+ años) superando el requerimiento de 3-5 años.",
-      "Dominio total del stack principal solicitado (Laravel/PHP/Vue.js).",
-      "Perfil Full Stack alineado con los requerimientos del rol."
+      "Más de 6 años de experiencia profesional superan el requisito solicitado",
+      "Dominio experto del stack tecnológico principal (Laravel/PHP/Vue)",
+      "Perfil Full Stack alineado perfectamente con los requerimientos del puesto"
     ],
     "weaknesses_for_this_role": [
-      "La oferta no detalla el rango salarial.",
-      "La modalidad de trabajo no está explícita en la descripción proporcionada."
+      "Ausencia de información salarial",
+      "Falta de mención explícita a Tailwind y Sass (fáciles de aprender dado su background)"
     ],
-    "probability_of_interview": 95,
-    "recommendation": "Aplicar inmediatamente. El perfil de Augusto es un 'match' perfecto para los requisitos técnicos solicitados. La experiencia acumulada le otorga una ventaja competitiva alta frente a otros candidatos.",
-    "cv_focus": "Resaltar los proyectos donde se utilizó Laravel y Vue.js en conjunto, enfatizando la escalabilidad y el rendimiento (temas clave de la oferta).",
-    "cover_letter_focus": "Enfocarse en la autonomía del candidato (self-starter) y su experiencia optimizando la performance de aplicaciones web, alineándose directamente con las responsabilidades listadas."
+    "probability_of_interview": 90,
+    "recommendation": "Aplicar inmediatamente. El perfil encaja perfectamente con el stack solicitado y los años de experiencia requeridos para un rol Senior.",
+    "cv_focus": "Destacar la experiencia en desarrollo Full Stack con Laravel y Vue.js, mencionando proyectos donde se haya priorizado el mobile-first y el rendimiento.",
+    "cover_letter_focus": "Enfocarse en la capacidad de autogestión y el historial de entrega de código escalable y reutilizable, resaltando la experiencia previa en equipos bajo metodologías ágiles."
   },
   {
     "title": "Senior Full Stack Developer (Laravel  Vue.js)",
     "company": "MicroVentures",
     "description": "About the Role: We're seeking a Senior Full Stack Developer to join our engineering team. You'll work across the entire stack, crafting performant APIs with Laravel and building dynamic, responsive interfaces with Vue.js . This role requires someone who can own features end-to-end, contribute to architectural decisions, and help mentor junior teammates. Our stack includes Laravel 12, Vue.js , MySQL, Redis, and TailwindCSS. What You'll Do: Develop, test, and maintain full-stack functionality usi…",
-    "url": "https://www.adzuna.com/land/ad/5559184291?se=Wv4Ps5Fp8RGL5KWYPU-8Gw&utm_medium=api&utm_source=7acc59fd&v=05E0423284791B3DE66F71A3900D338A7B97A82D",
+    "url": "https://www.adzuna.com/land/ad/5559184291?se=al0PkaRp8RGkqKbDwZjUHw&utm_medium=api&utm_source=7acc59fd&v=05E0423284791B3DE66F71A3900D338A7B97A82D",
     "tags": [
       "IT Jobs"
     ],
@@ -570,33 +749,34 @@
     "score": 95,
     "recommended": true,
     "job_title": "Senior Full Stack Developer (Laravel Vue.js)",
-    "work_mode": "No especificado",
+    "work_mode": "Not specified",
     "seniority": "Senior",
     "salary_detected": false,
-    "salary_estimated": "No informado",
+    "salary_estimated": "Not disclosed",
     "matching_skills": [
       "Laravel",
       "Vue.js",
       "MySQL",
       "Redis",
-      "Full Stack Development"
+      "Full Stack development"
     ],
     "missing_skills": [
-      "TailwindCSS (experiencia transferible desde CSS general)"
+      "TailwindCSS (Transferible skill)"
     ],
     "strengths_for_this_role": [
-      "Experiencia exacta en el stack principal (Laravel/Vue.js)",
-      "Seniority altamente alineado con los requerimientos (6+ años)",
-      "Capacidad probada de trabajar con arquitecturas similares a las solicitadas"
+      "Experiencia exacta en el stack principal (Laravel + Vue.js)",
+      "Más de 6 años de experiencia profesional alineados al perfil Senior",
+      "Capacidad para arquitectura y mentoría",
+      "Experiencia con bases de datos relacionales y caché (MySQL/Redis)"
     ],
     "weaknesses_for_this_role": [
-      "Salario no especificado en la oferta (incertidumbre sobre si cumple con el mínimo de ARS 2.000.000)",
-      "Modalidad de trabajo no detallada"
+      "No se especifica el salario, lo cual impide confirmar el cumplimiento del mínimo deseado",
+      "No se menciona la modalidad de trabajo"
     ],
     "probability_of_interview": 90,
-    "recommendation": "Aplicar inmediatamente. El perfil es un 'match' técnico perfecto. Dado que el salario no está publicado, recomiendo preguntar en la primera instancia de contacto o mensaje de presentación para asegurar que se encuentre en tu rango salarial objetivo.",
-    "cv_focus": "Resaltar los proyectos donde lideraste el desarrollo end-to-end con Laravel y Vue.js, y enfatizar tu experiencia en el mentoring de equipos junior como solicita la oferta.",
-    "cover_letter_focus": "Enfocar la carta en tu capacidad para tomar decisiones arquitectónicas y tu experiencia demostrable con el ecosistema PHP/Laravel y la modernización de interfaces con Vue.js."
+    "recommendation": "Aplicar inmediatamente. El perfil técnico de Augusto es un match perfecto con el stack de MicroVentures. Su experiencia senior en PHP/Laravel y JavaScript/Vue.js lo posiciona como un candidato altamente competitivo.",
+    "cv_focus": "Resaltar los proyectos donde se utilizó Laravel y Vue.js conjuntamente, enfatizando la arquitectura y la entrega de funcionalidades end-to-end.",
+    "cover_letter_focus": "Destacar la experiencia en mentoría y toma de decisiones arquitectónicas, mostrando disposición para asumir el rol de liderazgo técnico que la empresa busca."
   },
   {
     "title": "Full Stack Developer",
@@ -608,39 +788,38 @@
     ],
     "source": "Adzuna",
     "_rank": 14,
-    "score": 90,
+    "score": 92,
     "recommended": true,
     "job_title": "Full Stack Developer",
     "work_mode": "Not specified",
-    "seniority": "Experienced",
+    "seniority": "Experienced (Senior)",
     "salary_detected": false,
-    "salary_estimated": "Not disclosed",
+    "salary_estimated": "Not specified",
     "matching_skills": [
       "PHP",
       "Laravel",
-      "Node.js",
       "React",
+      "Node.js",
       "Full Stack Development"
     ],
     "missing_skills": [
-      "Figma",
-      "Adobe XD",
       "WordPress",
-      "Shopify"
+      "Shopify",
+      "Figma/Adobe XD"
     ],
     "strengths_for_this_role": [
-      "El candidato tiene un stack tecnológico que coincide casi perfectamente con los requerimientos principales (PHP/Laravel, Node.js, React).",
-      "Más de 6 años de experiencia profesional superan ampliamente el nivel requerido para un rol Full Stack senior.",
-      "Experiencia con metodologías de trabajo en equipo que facilitarán la colaboración con departamentos de QA y diseño."
+      "Augusto tiene un dominio experto en el stack principal solicitado (PHP/Laravel/React/Node.js).",
+      "Más de 6 años de experiencia cumplen sobradamente con el requisito de 'experienced'.",
+      "Perfil altamente versátil capaz de cubrir tanto backend como frontend."
     ],
     "weaknesses_for_this_role": [
-      "Falta de experiencia específica mencionada en CMS como WordPress o Shopify.",
-      "No se especifica el nivel de manejo de herramientas de diseño como Figma o Adobe XD, aunque es una habilidad transferible y secundaria para el perfil técnico."
+      "Falta de experiencia específica mencionada en plataformas CMS como WordPress o Shopify.",
+      "El flujo de trabajo con herramientas de diseño (Figma/Adobe XD) no está explícito en el perfil, aunque es una habilidad transferible común para un Full Stack Senior."
     ],
     "probability_of_interview": 85,
-    "recommendation": "Aplicar inmediatamente. El perfil de Augusto es un match técnico excelente para el core stack de la posición. La falta de experiencia en CMS es marginal dado su seniority técnico.",
-    "cv_focus": "Resaltar los proyectos donde se haya trabajado con arquitectura Full Stack completa y cualquier interacción con equipos de diseño o UI/UX.",
-    "cover_letter_focus": "Enfocarse en la versatilidad de trabajar en el stack completo (PHP/Node/React) y expresar disposición para adaptarse rápidamente a plataformas CMS si no se tiene experiencia previa directa."
+    "recommendation": "Aplicar inmediatamente. El perfil de Augusto es un 'perfect match' para el stack tecnológico solicitado. La falta de experiencia en CMS es marginal dado su sólido background en ingeniería de software.",
+    "cv_focus": "Resaltar proyectos donde hayas tenido que integrar desarrollos personalizados con plataformas CMS o API-first approaches. Mencionar familiaridad con herramientas de diseño/prototipado si las has usado en el pasado.",
+    "cover_letter_focus": "Enfocarse en la capacidad de construir arquitecturas escalables usando Laravel y React, y mencionar la rápida capacidad de aprendizaje para dominar entornos CMS específicos (Shopify/WordPress) bajo un enfoque de desarrollo profesional."
   },
   {
     "title": "PHP Devs - Conract",
@@ -655,199 +834,31 @@
     "score": 92,
     "recommended": true,
     "job_title": "PHP Developer (Laravel)",
-    "work_mode": "No especificado (Asumido remoto/híbrido por contexto de contratación internacional)",
+    "work_mode": "No especificado",
     "seniority": "Senior/Mid-Level",
     "salary_detected": false,
-    "salary_estimated": "No informado",
+    "salary_estimated": "No especificado",
     "matching_skills": [
       "PHP",
       "Laravel",
+      "AWS",
       "Vue.js",
-      "AWS",
-      "Microservices architecture"
-    ],
-    "missing_skills": [],
-    "strengths_for_this_role": [
-      "El stack técnico (Laravel + Vue.js) es una de las fortalezas principales del candidato.",
-      "Experiencia previa con arquitecturas escalables y AWS, alineada con los requisitos de la oferta.",
-      "Perfil senior (6+ años) que encaja perfectamente con la necesidad de escalar una plataforma en crecimiento."
-    ],
-    "weaknesses_for_this_role": [
-      "La oferta parece estar orientada a mercado UK, lo que podría requerir disponibilidad horaria o procesos de facturación internacional (Contractor).",
-      "Al no especificar el salario, existe incertidumbre sobre si cumple con el mínimo de ARS 2.000.000, aunque por ser posición para UK, suele ser superior."
-    ],
-    "probability_of_interview": 85,
-    "recommendation": "Aplicar inmediatamente. El perfil técnico es un 'match' casi perfecto con las tecnologías requeridas. Al ser una posición de 'Contractor' para el Reino Unido, es muy probable que la compensación supere ampliamente tus expectativas salariales.",
-    "cv_focus": "Destacar los proyectos donde hayas implementado arquitecturas de microservicios en Laravel y tu experiencia gestionando infraestructura en AWS.",
-    "cover_letter_focus": "Resaltar tu capacidad para trabajar en entornos de alto crecimiento y tu experiencia en el ciclo de vida completo de aplicaciones escalables, mencionando tu flexibilidad con el stack Full Stack."
-  },
-  {
-    "title": "Junior Software Engineer",
-    "company": "Hyperloop Recruitment",
-    "description": "Junior Software Developer (Graduate / Early Career) Liverpool (Hybrid) £28,000 – £32,000 DOE PHP | Laravel | APIs | AWS | Docker | JavaScript The Client We're representing a growing software company that develops scalable and secure software platforms for customers operating within highly regulated industries. With an established customer base and continued business growth, they've built a reputation for delivering robust technology solutions that support mission-critical operations. PHP | Lara…",
-    "url": "https://www.adzuna.co.uk/jobs/land/ad/5761544248?se=ttxktZFp8RGLEaLh4znBvA&utm_medium=api&utm_source=7acc59fd&v=55AEC51D987FD3A5D1A838BB049A1ED4B7E9BBC1",
-    "tags": [
-      "IT Jobs"
-    ],
-    "source": "Adzuna",
-    "_rank": 14,
-    "score": 53,
-    "recommended": false,
-    "job_title": "Junior Software Engineer",
-    "work_mode": "Hybrid",
-    "seniority": "Junior",
-    "salary_detected": true,
-    "salary_estimated": "£28,000 – £32,000 per year",
-    "matching_skills": [
-      "PHP",
-      "Laravel",
-      "AWS",
-      "Docker"
-    ],
-    "missing_skills": [],
-    "strengths_for_this_role": [
-      "El candidato posee un dominio excelente del stack tecnológico solicitado (PHP/Laravel/AWS/Docker).",
-      "Alta capacidad de ejecución técnica inmediata."
-    ],
-    "weaknesses_for_this_role": [
-      "Desalineación de Seniority: El candidato es Senior (+6 años) y la oferta es Junior (Early Career).",
-      "Desalineación Salarial: El salario ofrecido (£28k-£32k anuales) es significativamente inferior a las expectativas del candidato (aprox. £40k+ equivalentes a sus pretensiones de ARS 2M/mes).",
-      "Ubicación: La oferta es en Liverpool (Híbrido), lo cual invalida la posibilidad de trabajo remoto para alguien fuera del Reino Unido."
-    ],
-    "probability_of_interview": 30,
-    "recommendation": "No recomendable. El perfil está sobrecualificado para una posición Junior y la remuneración no alcanza el mínimo esperado por el candidato. Además, la restricción geográfica (Liverpool) impide el trabajo remoto efectivo.",
-    "cv_focus": "No aplicar; buscar roles Senior o Lead que permitan trabajo remoto y compensación acorde a +6 años de experiencia.",
-    "cover_letter_focus": "N/A"
-  },
-  {
-    "title": "Technical Lead Developer (AI)",
-    "company": "Tesslogs IT Solutions",
-    "description": "Hello All, Greetings from Tesslogs We are looking for an experienced AI Tech Lead to drive the technical delivery and engineering execution of AI solutions. Client: Infosys Exp: 8 years Location: Perth, Aus Python Backend Development Node.js / TypeScript React.js AWS Serverless Architecture (Lambda, API Gateway, Step Functions, SQS, S3) PostgreSQL / SQL Databases CI/CD – GitHub Actions AWS CDK / CloudFormation Cloud-Native Application Development API Integrations & Microservices AI / Agentic AI…",
-    "url": "https://www.adzuna.com.au/details/5740015724?utm_medium=api&utm_source=7acc59fd",
-    "tags": [
-      "IT Jobs"
-    ],
-    "source": "Adzuna",
-    "_rank": 14,
-    "score": 78,
-    "recommended": true,
-    "job_title": "Technical Lead Developer (AI)",
-    "work_mode": "No especificado (Probablemente remoto o relocalización)",
-    "seniority": "Lead",
-    "salary_detected": false,
-    "salary_estimated": "No informado",
-    "matching_skills": [
-      "Python",
-      "Node.js",
-      "React.js",
-      "AWS",
-      "PostgreSQL",
-      "CI/CD",
       "Microservices"
     ],
-    "missing_skills": [
-      "AI/Agentic AI specific experience",
-      "AWS Serverless (Lambda, Step Functions)",
-      "AWS CDK / CloudFormation"
-    ],
-    "strengths_for_this_role": [
-      "Experiencia técnica amplia (6+ años) que respalda el rol de Lead",
-      "Dominio de Python y Node.js, core del stack solicitado",
-      "Experiencia con ecosistema AWS y arquitecturas de microservicios",
-      "Perfil políglota (Frontend/Backend) ideal para liderar equipos full-stack"
-    ],
-    "weaknesses_for_this_role": [
-      "Falta de experiencia específica documentada en desarrollo de modelos de AI/Agentic AI",
-      "La posición es Lead, lo cual requiere mayor enfoque en gestión y arquitectura que el nivel actual de ejecución pura",
-      "El inglés no está especificado como 'fluido', pero el rol en Australia exigirá un nivel superior al intermedio actual"
-    ],
-    "probability_of_interview": 75,
-    "recommendation": "Recomendable. El perfil técnico es altamente compatible, pero el factor de 'AI/Agentic AI' es crítico. Si Augusto tiene proyectos personales o experiencia previa utilizando librerías de IA (LangChain, OpenAI API, etc.), debe resaltarlos inmediatamente para compensar la falta de experiencia formal en el nicho de AI.",
-    "cv_focus": "Enfocar el CV en la experiencia de arquitectura de microservicios y despliegues en AWS, destacando cualquier integración con APIs de IA o herramientas de automatización inteligente.",
-    "cover_letter_focus": "Destacar la capacidad de liderazgo técnico y la adaptabilidad a nuevas tecnologías, mencionando explícitamente el interés por la IA y la disposición para liderar equipos en proyectos de alta complejidad técnica."
-  },
-  {
-    "title": "Cloud Engineer (IA  ML)",
-    "company": "Orion Innovation",
-    "description": "Desarrollador/a Cloud SR (Multi-Cloud  IA - ML) – CDMX Ubicación: Polanco / Reforma, CDMX (Híbrido) Esquema: 2 días en oficina Horario: Lunes a viernes, 9:00 a.m. – 6:00 p.m Objetivo del rol Diseñar y construir soluciones escalables en entornos multi-nube (GCP, AWS, Azure), integrando desarrollo backend, prácticas DevOps / MLOps y modelos de IA / ML en producción Requisitos Obligatorios 4 años como Desarrollador Cloud Experiencia en multi-nube (GCP, AWS o Azure) Docker, Kubernetes (GKE/EKS/AKS)…",
-    "url": "https://www.adzuna.com.mx/land/ad/5759835177?se=sI_cqZFp8RGLEaLh4znBvA&utm_medium=api&utm_source=7acc59fd&v=286D3F9D71D44DE8861BA20D60CB82FFC2D65FB2",
-    "tags": [
-      "Empleos en informática"
-    ],
-    "source": "Adzuna",
-    "_rank": 13,
-    "score": 65,
-    "recommended": false,
-    "job_title": "Cloud Engineer (IA ML)",
-    "work_mode": "Híbrido (Polanco / Reforma, CDMX)",
-    "seniority": "Senior",
-    "salary_detected": false,
-    "salary_estimated": "No informado",
-    "matching_skills": [
-      "AWS",
-      "Docker",
-      "Kubernetes",
-      "Backend Development",
-      "DevOps"
-    ],
-    "missing_skills": [
-      "GCP",
-      "Azure",
-      "IA/ML (Modelos de producción)",
-      "MLOps"
-    ],
-    "strengths_for_this_role": [
-      "Fuerte background en DevOps (Docker/Kubernetes)",
-      "Experiencia sólida en Backend y Cloud (AWS)",
-      "Más de 6 años de experiencia total cubren el requisito de 4 años"
-    ],
-    "weaknesses_for_this_role": [
-      "La oferta requiere presencialidad en CDMX, México, siendo que el candidato está basado en Argentina",
-      "Falta de experiencia específica en proyectos de IA/ML y MLOps",
-      "La necesidad de reubicación internacional hace que la probabilidad de éxito sea muy baja"
-    ],
-    "probability_of_interview": 20,
-    "recommendation": "No recomendable principalmente por la ubicación geográfica. El candidato reside en Argentina y la oferta exige presencialidad en CDMX (Híbrido). A menos que el candidato contemple seriamente una reubicación internacional y esté dispuesto a aprender el stack específico de ML/IA, no es una posición adecuada para su perfil actual.",
-    "cv_focus": "Enfocar CV en proyectos de alta escalabilidad y arquitectura Cloud para compensar la falta de experiencia en IA.",
-    "cover_letter_focus": "Consultar explícitamente sobre la posibilidad de relocation o esquema 100% remoto, ya que el candidato reside en un país distinto al de la vacante."
-  },
-  {
-    "title": "26-2267: Full Stack Developer (PHP / Laravel / React)",
-    "company": "Navitas Business Consulting",
-    "description": "Full Stack Developer (PHP / Laravel / React) Job ID: 26-2267 Location: Remote Who We Are : Since our inception back in 2006, Navitas has grown to be an industry leader in the digital transformation space, and we’ve served as trusted advisors supporting our client base within the commercial, federal, and state and local markets. What We Do : At our very core, we’re a group of problem solvers providing our award-winning technology solutions to drive digital acceleration for our customers! With pr…",
-    "url": "https://www.adzuna.com/details/5738063971?utm_medium=api&utm_source=7acc59fd",
-    "tags": [
-      "IT Jobs"
-    ],
-    "source": "Adzuna",
-    "_rank": 13,
-    "score": 85,
-    "recommended": true,
-    "job_title": "Full Stack Developer (PHP / Laravel / React)",
-    "work_mode": "Remote",
-    "seniority": "Senior/Mid-Level",
-    "salary_detected": false,
-    "salary_estimated": "Not disclosed",
-    "matching_skills": [
-      "PHP",
-      "Laravel",
-      "React",
-      "Full Stack Development"
-    ],
     "missing_skills": [],
     "strengths_for_this_role": [
-      "Alineación técnica perfecta con el stack principal (PHP/Laravel/React).",
-      "Más de 6 años de experiencia, lo cual es ideal para consultoras que requieren autonomía.",
-      "Modalidad remota, cumpliendo con la preferencia del candidato.",
-      "Experiencia técnica sólida que permite una curva de aprendizaje mínima."
+      "Experiencia sólida en PHP y Laravel, coincidencia exacta con el requerimiento principal.",
+      "Experiencia comprobada en AWS, fundamental para la arquitectura de microservicios solicitada.",
+      "Conocimiento de Vue.js, lo cual es un plus valorado por el cliente para el frontend.",
+      "Más de 6 años de experiencia cubren sobradamente el perfil necesario para escalar una plataforma de e-commerce."
     ],
     "weaknesses_for_this_role": [
-      "Salario no informado, lo que genera incertidumbre sobre si cumple con el mínimo de ARS 2.000.000.",
-      "Al ser una consultora, el ritmo de trabajo puede ser de alta presión."
+      "La oferta no especifica el rango salarial ni la modalidad de trabajo, lo cual debe ser consultado en la primera entrevista.",
+      "Al ser una empresa basada en Reino Unido, es posible que los procesos de contratación tengan requisitos de zona horaria o residencia específicos."
     ],
-    "probability_of_interview": 85,
-    "recommendation": "Muy recomendable. El perfil de Augusto es un 'match' técnico directo para esta vacante. Dado que la empresa es una consultora, la entrevista técnica probablemente se enfocará en la capacidad de resolución de problemas y adaptabilidad, puntos fuertes de Augusto al manejar múltiples tecnologías.",
-    "cv_focus": "Resaltar los proyectos donde se utilizó la combinación Laravel + React para demostrar experiencia real en el stack solicitado.",
-    "cover_letter_focus": "Enfocarse en la capacidad de resolución de problemas mencionando la experiencia en entornos complejos y el uso de buenas prácticas (SOLID/TDD) para garantizar entregas de alta calidad."
+    "probability_of_interview": 90,
+    "recommendation": "Aplicar inmediatamente. El perfil de Augusto encaja perfectamente con el stack tecnológico de la oferta y su experiencia permite afrontar desafíos de escalabilidad y microservicios sin problemas.",
+    "cv_focus": "Resaltar proyectos previos que involucren arquitectura de microservicios y escalabilidad en plataformas de e-commerce utilizando Laravel y AWS.",
+    "cover_letter_focus": "Enfocar la carta de presentación en la capacidad para escalar sistemas existentes y mencionar la versatilidad de trabajar con el stack completo (PHP/Laravel + Vue.js) como un facilitador para el equipo de desarrollo."
   }
 ]

@@ -46,7 +46,7 @@ console.log(`\nGenerated ${generated} / ${eligible.length} CVs`);
 async function callGeminiWithRetry(prompt, maxRetries = 3) {
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-3.1-flash-lite:generateContent?key=${process.env.GEMINI_API_KEY}`, {
+      const response = await fetch(`${process.env.VITE_GEMINI_MODEL_URL}:generateContent?key=${process.env.VITE_GEMINI_API_KEY}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

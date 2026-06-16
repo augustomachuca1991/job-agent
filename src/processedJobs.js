@@ -1,6 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 
-export const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
+export const supabase = createClient(process.env.VITE_SUPABASE_URL, process.env.VITE_SUPABASE_SERVICE_ROLE_KEY);
 
 export async function isProcessed(url) {
   const { data, error } = await supabase.from("processed_jobs").select("url").eq("url", url).maybeSingle();
@@ -11,6 +11,11 @@ export async function isProcessed(url) {
 }
 
 export async function markProcessed(url, company, title, score) {
+  if (!url) {
+    console.warn(`markProcessed skipped: null url (${company} — ${title})`);
+    return;
+  }
+
   const { error } = await supabase.from("processed_jobs").upsert({
     url,
     company: company || null,

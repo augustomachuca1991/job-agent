@@ -24,6 +24,7 @@ export default async function searchHimalayas() {
       const jobs = data.jobs || [];
 
       for (const job of jobs) {
+        if (!job.url) continue;
         if (seen.has(job.url)) continue;
         seen.add(job.url);
 

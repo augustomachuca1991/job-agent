@@ -6,10 +6,10 @@ const WHAT_QUERIES = [
 ];
 
 export default async function searchAdzuna() {
-  const { ADZUNA_APP_ID, ADZUNA_APP_KEY } = process.env;
+  const { VITE_ADZUNA_APP_ID, VITE_ADZUNA_APP_KEY } = process.env;
 
-  if (!ADZUNA_APP_ID || !ADZUNA_APP_KEY) {
-    console.warn("Adzuna: missing ADZUNA_APP_ID or ADZUNA_APP_KEY");
+  if (!VITE_ADZUNA_APP_ID || !VITE_ADZUNA_APP_KEY) {
+    console.warn("Adzuna: missing VITE_ADZUNA_APP_ID or VITE_ADZUNA_APP_KEY");
     return [];
   }
 
@@ -19,7 +19,7 @@ export default async function searchAdzuna() {
   for (const country of COUNTRIES) {
     for (const what of WHAT_QUERIES) {
       try {
-        const url = `https://api.adzuna.com/v1/api/jobs/${country}/search/1?app_id=${ADZUNA_APP_ID}&app_key=${ADZUNA_APP_KEY}&results_per_page=20&what=${encodeURIComponent(what)}`;
+        const url = `https://api.adzuna.com/v1/api/jobs/${country}/search/1?app_id=${VITE_ADZUNA_APP_ID}&app_key=${VITE_ADZUNA_APP_KEY}&results_per_page=20&what=${encodeURIComponent(what)}`;
 
         const res = await fetch(url, {
           headers: { "User-Agent": "Mozilla/5.0" },
