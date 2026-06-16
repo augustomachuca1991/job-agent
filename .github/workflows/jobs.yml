@@ -31,10 +31,25 @@ jobs:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.VITE_SUPABASE_SERVICE_ROLE_KEY }}
 
+      - run: node src/generateCV.js
+        env:
+          VITE_GEMINI_API_KEY: ${{ secrets.VITE_GEMINI_API_KEY }}
+          VITE_GEMINI_MODEL_URL: ${{ secrets.VITE_GEMINI_MODEL_URL }}
+
+      - run: node src/generateCover.js
+        env:
+          VITE_GEMINI_API_KEY: ${{ secrets.VITE_GEMINI_API_KEY }}
+          VITE_GEMINI_MODEL_URL: ${{ secrets.VITE_GEMINI_MODEL_URL }}
+
+      - run: npx playwright install chromium
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: 0
+
+      - run: node src/generatePDFs.js
+
       - run: node src/saveSupabase.js
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_KEY: ${{ secrets.VITE_SUPABASE_KEY }}
           VITE_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.VITE_SUPABASE_SERVICE_ROLE_KEY }}
 
       - run: node src/notifyTelegram.js
