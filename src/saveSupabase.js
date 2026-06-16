@@ -58,8 +58,8 @@ for (let i = 0; i < eligible.length; i++) {
     const res = await fetch(`${process.env.VITE_SUPABASE_URL}/rest/v1/applications`, {
       method: "POST",
       headers: {
-        apikey: process.env.VITE_SUPABASE_KEY,
-        Authorization: `Bearer ${process.env.VITE_SUPABASE_KEY}`,
+        apikey: process.env.VITE_SUPABASE_SERVICE_ROLE_KEY,
+        Authorization: `Bearer ${process.env.VITE_SUPABASE_SERVICE_ROLE_KEY}`,
         "Content-Type": "application/json",
         Prefer: "return=minimal",
       },
