@@ -1,10 +1,16 @@
 import searchRemoteOK from "./remoteok.js";
 import searchAdzuna from "./adzuna.js";
 import searchSerpAPI from "./serpapi.js";
+import searchJobicy from "./jobicy.js";
+import searchRemotive from "./remotive.js";
+import searchHimalayas from "./himalayas.js";
 
 const SOURCES = [
   { name: "RemoteOK", fn: searchRemoteOK },
   { name: "Adzuna", fn: searchAdzuna },
+  { name: "Jobicy", fn: searchJobicy },
+  { name: "Remotive", fn: searchRemotive },
+  { name: "Himalayas", fn: searchHimalayas },
   { name: "SerpAPI", fn: searchSerpAPI },
 ];
 

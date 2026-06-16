@@ -1,31 +1,20 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { isProcessed, markProcessed } from "./processedJobs.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const jobs = JSON.parse(fs.readFileSync("jobs.json", "utf8"));
 const profile = JSON.parse(fs.readFileSync("./data/profile.json", "utf8"));
-const promptTemplate = fs.readFileSync(
-  path.join(__dirname, "..", "prompts", "score.txt"),
-  "utf8"
-);
+const promptTemplate = fs.readFileSync(path.join(__dirname, "..", "prompts", "score.txt"), "utf8");
 
 const SKILLS = (profile.skills || []).map((s) => s.toLowerCase());
-const ROLES = [
-  "backend", "full stack", "frontend", "devops",
-  "software engineer", "platform engineer",
-];
+const ROLES = ["backend", "full stack", "frontend", "devops", "software engineer", "platform engineer"];
 const KEYWORDS = [...SKILLS, ...ROLES, "remote", "senior", "ssr", "mid"];
 
 function relevanceScore(job) {
-  const text = [
-    job.title,
-    job.description,
-    ...(job.tags || []),
-  ]
-    .join(" ")
-    .toLowerCase();
+  const text = [job.title, job.description, ...(job.tags || [])].join(" ").toLowerCase();
 
   let score = 0;
 
@@ -43,9 +32,7 @@ function relevanceScore(job) {
   return score;
 }
 
-const ranked = jobs
-  .map((job) => ({ ...job, _rank: relevanceScore(job) }))
-  .sort((a, b) => b._rank - a._rank);
+const ranked = jobs.map((job) => ({ ...job, _rank: relevanceScore(job) })).sort((a, b) => b._rank - a._rank);
 
 const topJobs = ranked.slice(0, 20);
 
@@ -55,23 +42,21 @@ for (const job of topJobs) {
 }
 
 const scoredJobs = [];
-const MS_PER_REQUEST = 7_000;
 
-for (let i = 0; i < topJobs.length; i++) {
-  const job = topJobs[i];
+for (const job of topJobs) {
+  const processed = await isProcessed(job.url);
 
-  const prompt = promptTemplate.replace(
-    "{{JOB_DESCRIPTION}}",
-    JSON.stringify(job, null, 2)
-  );
+  if (processed) {
+    console.log(`⏭️ Skip: ${job.title} @ ${job.company}`);
+    continue;
+  }
+
+  const prompt = promptTemplate.replace("{{JOB_DESCRIPTION}}", JSON.stringify(job, null, 2));
 
   const analysis = await callGeminiWithRetry(prompt);
   if (analysis) {
     scoredJobs.push({ ...job, ...analysis });
-  }
-
-  if (i < topJobs.length - 1) {
-    await sleep(MS_PER_REQUEST);
+    await markProcessed(job.url, job.company, job.title, analysis.score || job._rank);
   }
 }
 
@@ -81,25 +66,18 @@ console.log(`\nScored ${scoredJobs.length} jobs`);
 async function callGeminiWithRetry(prompt, maxRetries = 5) {
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash-lite:generateContent?key=${process.env.GEMINI_API_KEY}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }],
-          }),
-        }
-      );
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-3.1-flash-lite:generateContent?key=${process.env.GEMINI_API_KEY}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+        }),
+      });
 
       if (response.status === 429) {
         const body = await response.json();
-        const retryMatch = body?.error?.message?.match(
-          /Please retry in (\d+(?:\.\d+)?)s/
-        );
-        const delay = retryMatch
-          ? parseFloat(retryMatch[1]) + 1
-          : 60;
+        const retryMatch = body?.error?.message?.match(/Please retry in (\d+(?:\.\d+)?)s/);
+        const delay = retryMatch ? parseFloat(retryMatch[1]) + 1 : 60;
         console.warn(`  429 — retrying in ${delay.toFixed(0)}s (attempt ${attempt}/${maxRetries})`);
         await sleep(delay * 1000);
         continue;
@@ -118,7 +96,10 @@ async function callGeminiWithRetry(prompt, maxRetries = 5) {
         return null;
       }
 
-      const clean = text.replace(/```json?/g, "").replace(/```/g, "").trim();
+      const clean = text
+        .replace(/```json?/g, "")
+        .replace(/```/g, "")
+        .trim();
       return JSON.parse(clean);
     } catch (err) {
       console.error(`Gemini error (attempt ${attempt}):`, err.message);
