@@ -32,6 +32,7 @@ export default function App() {
   const [statusFilter, setStatusFilter] = useState("all");
   const [sortField, setSortField] = useState<SortField>("score");
   const [sortAsc, setSortAsc] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     const cfg = getSupabaseConfig();
@@ -119,18 +120,34 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-start justify-center p-6">
-      <div className="w-full max-w-5xl bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden flex">
+    <div className="min-h-screen bg-gray-100 flex items-start justify-center p-4 md:p-6">
+      <div className="w-full max-w-5xl bg-white rounded-xl md:rounded-xl border border-gray-200 shadow-sm overflow-hidden flex min-h-0 md:min-h-0">
         {/* Sidebar */}
         <Sidebar
           apps={apps}
           statusFilter={statusFilter}
           onStatusChange={setStatusFilter}
           onDisconnect={handleDisconnect}
+          isOpen={sidebarOpen}
+          onToggle={() => setSidebarOpen((p) => !p)}
         />
 
         {/* Main content */}
         <div className="flex-1 flex flex-col min-w-0">
+          {/* Mobile header with hamburger */}
+          <div className="flex items-center gap-3 px-4 py-3 border-b border-gray-200 md:hidden">
+            <button
+              onClick={() => setSidebarOpen((p) => !p)}
+              className="p-1.5 -ml-1 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors cursor-pointer border-0"
+              aria-label="Abrir menú"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            </button>
+            <img src="/logo.svg" alt="Job Agent" className="h-6" />
+          </div>
+
           {/* Top bar with filters */}
           <Filters
             search={search}
