@@ -4,6 +4,7 @@ import searchSerpAPI from "./serpapi.js";
 import searchJobicy from "./jobicy.js";
 import searchRemotive from "./remotive.js";
 import searchHimalayas from "./himalayas.js";
+import searchUniversia from "./universia.js";
 
 const SOURCES = [
   { name: "RemoteOK", fn: searchRemoteOK },
@@ -12,6 +13,7 @@ const SOURCES = [
   { name: "Remotive", fn: searchRemotive },
   { name: "Himalayas", fn: searchHimalayas },
   { name: "SerpAPI", fn: searchSerpAPI },
+  { name: "Universia", fn: searchUniversia },
 ];
 
 export default async function aggregateJobs() {

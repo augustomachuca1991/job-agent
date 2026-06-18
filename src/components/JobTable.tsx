@@ -10,6 +10,7 @@ interface Props {
   sortAsc: boolean;
   onSort: (field: SortField) => void;
   onStatusUpdate: (id: string, status: string) => void;
+  onJobClick: (id: string, company: string, url: string) => void;
   onGenerateInterview: (id: string, company: string, title: string) => void;
   onGenerateCv: (id: string) => void;
   generatingInterviewIds: Set<string>;
@@ -41,7 +42,6 @@ const TRANSITIONS: Record<string, string[]> = {
 };
 
 const LINKS = [
-  { key: "job_url" as const, label: "Job", icon: <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg> },
   { key: "cv_url" as const, label: "CV", icon: <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /></svg> },
   { key: "cover_url" as const, label: "Cover", icon: <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg> },
 ];
@@ -52,9 +52,10 @@ function scoreStyle(s: number) {
   return { grad: "rgba(255,255,255,.15)", color: "#5a4566" };
 }
 
-function MobileCard({ job, onStatusUpdate, onGenerateInterview, onGenerateCv, generatingInterview, generatingCv }: {
+function MobileCard({ job, onStatusUpdate, onJobClick, onGenerateInterview, onGenerateCv, generatingInterview, generatingCv }: {
   job: Application;
   onStatusUpdate: (id: string, status: string) => void;
+  onJobClick: (id: string, company: string, url: string) => void;
   onGenerateInterview: (id: string, company: string, title: string) => void;
   onGenerateCv: (id: string) => void;
   generatingInterview: boolean;
@@ -152,6 +153,20 @@ function MobileCard({ job, onStatusUpdate, onGenerateInterview, onGenerateCv, ge
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: "var(--txt3)" }}>{date}</span>
         <div style={{ display: "flex", gap: 4 }}>
+          <button
+            onClick={() => onJobClick(job.id, job.company, job.job_url || "")}
+            style={{
+              display: "inline-flex", alignItems: "center", gap: 2,
+              padding: "2px 6px", borderRadius: 4,
+              border: "1px solid var(--border)", color: "var(--txt3)",
+              background: "rgba(255,255,255,.03)",
+              fontSize: 9, fontFamily: "'Outfit', sans-serif",
+              cursor: "pointer",
+            }}
+          >
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
+            Job
+          </button>
           {LINKS.map(({ key, label, icon }) => {
             const href = job[key] as string | undefined;
             if (!href) return null;
@@ -246,7 +261,7 @@ function MobileCard({ job, onStatusUpdate, onGenerateInterview, onGenerateCv, ge
   );
 }
 
-export default function JobTable({ apps, sortField, sortAsc, onSort, onStatusUpdate, onGenerateInterview, onGenerateCv, generatingInterviewIds, generatingCvIds, isMobile }: Props) {
+export default function JobTable({ apps, sortField, sortAsc, onSort, onStatusUpdate, onJobClick, onGenerateInterview, onGenerateCv, generatingInterviewIds, generatingCvIds, isMobile }: Props) {
   if (apps.length === 0) {
     return (
       <div style={{ textAlign: "center", padding: "3rem", color: "var(--txt3)", fontSize: 13 }}>
@@ -267,6 +282,7 @@ export default function JobTable({ apps, sortField, sortAsc, onSort, onStatusUpd
             key={job.id}
             job={job}
             onStatusUpdate={onStatusUpdate}
+            onJobClick={onJobClick}
             onGenerateInterview={onGenerateInterview}
             onGenerateCv={onGenerateCv}
             generatingInterview={generatingInterviewIds.has(job.id)}
@@ -315,6 +331,7 @@ export default function JobTable({ apps, sortField, sortAsc, onSort, onStatusUpd
               job={job}
               index={i}
               onStatusUpdate={onStatusUpdate}
+              onJobClick={onJobClick}
               onGenerateInterview={onGenerateInterview}
               onGenerateCv={onGenerateCv}
               generatingInterview={generatingInterviewIds.has(job.id)}

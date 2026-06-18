@@ -1,6 +1,6 @@
 export default async function searchRemotive() {
   try {
-    const res = await fetch("https://remotive.com/api/remote-jobs?limit=100", {
+    const res = await fetch("https://remotive.com/api/remote-jobs?limit=200", {
       headers: { "User-Agent": "Mozilla/5.0" },
     });
 
@@ -16,6 +16,8 @@ export default async function searchRemotive() {
     const relevantCategories = [
       "software-dev", "full-stack-programming", "backend-programming",
       "devops-sysadmin", "frontend-programming",
+      "data-engineering", "data-science", "product",
+      "marketing", "customer-support",
     ];
 
     return jobs

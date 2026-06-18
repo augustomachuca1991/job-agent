@@ -7,6 +7,7 @@ interface Props {
   job: Application;
   index: number;
   onStatusUpdate: (id: string, status: string) => void;
+  onJobClick: (id: string, company: string, url: string) => void;
   onGenerateInterview: (id: string, company: string, title: string) => void;
   onGenerateCv: (id: string) => void;
   generatingInterview: boolean;
@@ -36,12 +37,11 @@ function scoreStyle(s: number) {
 }
 
 const LINKS = [
-  { key: "job_url" as const, label: "Job", icon: <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg> },
   { key: "cv_url" as const, label: "CV", icon: <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /></svg> },
   { key: "cover_url" as const, label: "Cover", icon: <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg> },
 ];
 
-export default function JobRow({ job, index, onStatusUpdate, onGenerateInterview, onGenerateCv, generatingInterview, generatingCv }: Props) {
+export default function JobRow({ job, index, onStatusUpdate, onJobClick, onGenerateInterview, onGenerateCv, generatingInterview, generatingCv }: Props) {
   const [showInterviewModal, setShowInterviewModal] = useState(false);
   const [showCvModal, setShowCvModal] = useState(false);
   const rowRef = useRef<HTMLTableRowElement>(null);
@@ -169,6 +169,34 @@ export default function JobRow({ job, index, onStatusUpdate, onGenerateInterview
         {/* Links */}
         <td style={tdStyle}>
           <div style={{ display: "flex", gap: 4 }}>
+            <button
+              onClick={() => onJobClick(job.id, job.company, job.job_url || "")}
+              style={{
+                display: "inline-flex", alignItems: "center", gap: 3,
+                padding: "2px 7px", borderRadius: 5,
+                border: "1px solid var(--border)", color: "var(--txt3)",
+                background: "rgba(255,255,255,.03)",
+                fontSize: 10, fontFamily: "'Outfit', sans-serif",
+                cursor: "pointer", transition: "all .15s",
+              }}
+              onMouseEnter={e => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.borderColor = "rgba(224,23,106,.4)";
+                el.style.color = "var(--mag)";
+                el.style.background = "rgba(224,23,106,.07)";
+                el.style.boxShadow = "0 0 10px rgba(224,23,106,.12)";
+              }}
+              onMouseLeave={e => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.borderColor = "var(--border)";
+                el.style.color = "var(--txt3)";
+                el.style.background = "rgba(255,255,255,.03)";
+                el.style.boxShadow = "none";
+              }}
+            >
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
+              Job
+            </button>
             {LINKS.map(({ key, label, icon }) => {
               const href = job[key] as string | undefined;
               if (!href) return null;

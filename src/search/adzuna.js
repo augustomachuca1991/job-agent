@@ -1,4 +1,4 @@
-const COUNTRIES = ["mx", "br", "es", "us", "gb", "ca", "au", "de", "nl"];
+const COUNTRIES = ["mx", "br", "ar", "es", "pt", "ie", "us"];
 const WHAT_QUERIES = [
   'backend developer', 'full stack developer', 'devops engineer',
   'desarrollador backend', 'desarrollador full stack', 'php developer',

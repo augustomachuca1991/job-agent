@@ -30,6 +30,7 @@ export default function App() {
   const [generatingInterviewIds, setGeneratingInterviewIds] = useState<Set<string>>(new Set());
   const [generatingCvIds, setGeneratingCvIds] = useState<Set<string>>(new Set());
   const [currentPage, setCurrentPage] = useState(1);
+  const [pendingJobConfirm, setPendingJobConfirm] = useState<{ id: string; company: string } | null>(null);
   const PAGE_SIZE = 20;
   const isMobile = useMediaQuery("(max-width: 768px)");
 
@@ -63,6 +64,23 @@ export default function App() {
   useEffect(() => {
     setCurrentPage(1);
   }, [search, scoreMin, statusFilter]);
+
+  useEffect(() => {
+    const handler = () => {
+      if (!document.hidden && pendingJobConfirm) {
+        const ok = window.confirm(`¿Enviaste tu postulación en ${pendingJobConfirm.company}?`);
+        if (ok) handleStatusUpdate(pendingJobConfirm.id, "APPLIED");
+        setPendingJobConfirm(null);
+      }
+    };
+    document.addEventListener("visibilitychange", handler);
+    return () => document.removeEventListener("visibilitychange", handler);
+  }, [pendingJobConfirm]);
+
+  const handleJobClick = useCallback((id: string, company: string, url: string) => {
+    setPendingJobConfirm({ id, company });
+    window.open(url, "_blank", "noopener");
+  }, []);
 
   const handleLogin = useCallback(() => {
     setSupabase(getDataClient());
@@ -318,6 +336,7 @@ export default function App() {
                   sortAsc={sortAsc}
                   onSort={handleSort}
                   onStatusUpdate={handleStatusUpdate}
+                  onJobClick={handleJobClick}
                   onGenerateInterview={handleGenerateInterview}
                   onGenerateCv={handleGenerateCv}
                   generatingInterviewIds={generatingInterviewIds}
@@ -369,6 +388,7 @@ export default function App() {
                       sortAsc={sortAsc}
                       onSort={handleSort}
                       onStatusUpdate={handleStatusUpdate}
+                      onJobClick={handleJobClick}
                       onGenerateInterview={handleGenerateInterview}
                       onGenerateCv={handleGenerateCv}
                       generatingInterviewIds={generatingInterviewIds}

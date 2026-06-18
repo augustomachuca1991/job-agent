@@ -3,8 +3,16 @@ const QUERIES = [
   'site:linkedin.com/jobs full stack developer remote',
   'site:linkedin.com/jobs devops engineer remote',
   'site:linkedin.com/jobs php developer remote',
-  'site:linkedin.com/jobs \u201cbackend developer\u201d Argentina',
+  'site:linkedin.com/jobs "backend developer" Argentina',
   'site:linkedin.com/jobs laravel developer remote',
+  'site:linkedin.com/jobs "desarrollador backend" Argentina',
+  'site:linkedin.com/jobs "desarrollador full stack" Argentina',
+  'site:linkedin.com/jobs "backend developer" México',
+  'site:linkedin.com/jobs "desarrollador backend" México',
+  'site:linkedin.com/jobs "backend developer" España',
+  'site:linkedin.com/jobs "desarrollador backend" España',
+  'site:linkedin.com/jobs "backend developer" Brasil',
+  'site:linkedin.com/jobs "full stack developer" Brasil',
 ];
 
 export default async function searchSerpAPI() {

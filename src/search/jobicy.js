@@ -5,6 +5,12 @@ const QUERIES = [
   { count: 50, tag: "php developer" },
   { count: 50, tag: "nodejs developer" },
   { count: 50, tag: "laravel developer" },
+  { count: 50, tag: "frontend developer" },
+  { count: 50, tag: "react developer" },
+  { count: 50, tag: "python developer" },
+  { count: 50, tag: "data engineer" },
+  { count: 50, tag: "desarrollador backend" },
+  { count: 50, tag: "desarrollador full stack" },
 ];
 
 export default async function searchJobicy() {

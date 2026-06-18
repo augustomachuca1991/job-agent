@@ -1,4 +1,13 @@
 // src/lib/exportDocument.ts
+//
+// Convierte el markdown de un CV/cover letter generado on-demand (cv_notes,
+// interview_notes, etc.) a PDF y a Word .docx. Ambos producen texto real
+// seleccionable, no imágenes — por eso son ATS-friendly.
+//
+// PDF: usa window.print() del propio navegador (cero dependencias nuevas).
+// Word: usa la librería `docx` (única dependencia nueva).
+//
+// npm install docx
 
 import MarkdownIt from "markdown-it";
 import {
@@ -27,10 +36,10 @@ function buildPrintableHTML(markdown: string, title: string): string {
 <meta charset="utf-8">
 <title>${title}</title>
 <style>
-  @page { size: A4; margin: 16mm 14mm; }
+  @page { size: A4; margin: 0; }
   * { box-sizing: border-box; }
   body {
-    margin: 0;
+    margin: 16mm 14mm;
     font-family: Calibri, Arial, "Segoe UI", sans-serif;
     font-size: 10.5pt;
     line-height: 1.45;
