@@ -29,6 +29,8 @@ export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [generatingInterviewIds, setGeneratingInterviewIds] = useState<Set<string>>(new Set());
   const [generatingCvIds, setGeneratingCvIds] = useState<Set<string>>(new Set());
+  const [currentPage, setCurrentPage] = useState(1);
+  const PAGE_SIZE = 20;
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   useEffect(() => {
@@ -57,6 +59,10 @@ export default function App() {
         else setApps((data as Application[]) || []);
       });
   }, [supabase]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search, scoreMin, statusFilter]);
 
   const handleLogin = useCallback(() => {
     setSupabase(getDataClient());
@@ -192,6 +198,12 @@ export default function App() {
       });
   }, [apps, search, scoreMin, statusFilter, sortField, sortAsc]);
 
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const paginatedApps = useMemo(
+    () => filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE),
+    [filtered, currentPage, PAGE_SIZE]
+  );
+
   if (authState === "loading") {
     return (
       <div style={{
@@ -274,44 +286,140 @@ export default function App() {
           />
         </div>
 
-        <main style={{ flex: 1, display: "flex", flexDirection: "column", minWidth: 0 }}>
-          <div style={{ padding: isMobile ? "12px 12px" : "16px 20px", borderBottom: "1px solid var(--border)" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
-              <span style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: ".1em", color: "var(--txt2)", fontWeight: 600 }}>
-                Score por aplicación
-              </span>
-            </div>
-            <ScoreChart apps={apps} isMobile={isMobile} />
-          </div>
+        <main style={{ flex: 1, display: "flex", minWidth: 0, overflow: "hidden" }}>
+          {isMobile ? (
+            /* Mobile: stacked layout */
+            <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+              {/* Chart card */}
+              <div style={{ padding: "12px", borderBottom: "1px solid var(--border)" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--txt3)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg>
+                  <span style={{ fontSize: 9, textTransform: "uppercase", letterSpacing: ".12em", color: "var(--txt2)", fontWeight: 600 }}>Distribución de scores</span>
+                </div>
+                <ScoreChart apps={apps} isMobile={true} />
+              </div>
 
-          <Filters search={search} onSearchChange={setSearch} scoreMin={scoreMin} onScoreChange={setScoreMin} isMobile={isMobile} />
+              <Filters search={search} onSearchChange={setSearch} scoreMin={scoreMin} onScoreChange={setScoreMin} isMobile={true} />
 
-          {loading && (
-            <div style={{ textAlign: "center", padding: "3rem", color: "var(--txt3)", fontSize: 13 }}>
-              Cargando aplicaciones…
+              {loading && (
+                <div style={{ textAlign: "center", padding: "3rem", color: "var(--txt3)", fontSize: 13 }}>
+                  Cargando aplicaciones…
+                </div>
+              )}
+              {error && (
+                <div style={{ margin: "12px 16px", background: "rgba(224,23,106,.1)", border: "1px solid rgba(224,23,106,.25)", borderRadius: 8, padding: "10px 14px", fontSize: 12, color: "#ff6b9d" }}>
+                  {error}
+                </div>
+              )}
+              {!loading && !error && (
+                <JobTable
+                  apps={paginatedApps}
+                  sortField={sortField}
+                  sortAsc={sortAsc}
+                  onSort={handleSort}
+                  onStatusUpdate={handleStatusUpdate}
+                  onGenerateInterview={handleGenerateInterview}
+                  onGenerateCv={handleGenerateCv}
+                  generatingInterviewIds={generatingInterviewIds}
+                  generatingCvIds={generatingCvIds}
+                  isMobile={true}
+                />
+              )}
+              {!loading && !error && <PaginationBar currentPage={currentPage} totalPages={totalPages} onChange={setCurrentPage} />}
             </div>
-          )}
-          {error && (
-            <div style={{ margin: "12px 16px", background: "rgba(224,23,106,.1)", border: "1px solid rgba(224,23,106,.25)", borderRadius: 8, padding: "10px 14px", fontSize: 12, color: "#ff6b9d" }}>
-              {error}
+          ) : (
+            /* Desktop: bento grid */
+            <div style={{ flex: 1, display: "flex", overflow: "hidden" }}>
+              {/* Left: Chart sidebar */}
+              <aside style={{
+                width: 280, flexShrink: 0,
+                borderRight: "1px solid var(--border)",
+                padding: "16px 16px 12px",
+                display: "flex", flexDirection: "column",
+                background: "rgba(255,255,255,.01)",
+              }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 12 }}>
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--txt3)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg>
+                  <span style={{ fontSize: 9, textTransform: "uppercase", letterSpacing: ".12em", color: "var(--txt2)", fontWeight: 600 }}>Score</span>
+                  <div style={{ flex: 1 }} />
+                  <span style={{ fontSize: 9, fontFamily: "'DM Mono', monospace", color: "var(--txt3)" }}>{apps.length} apps</span>
+                </div>
+                <ScoreChart apps={apps} isMobile={true} />
+              </aside>
+
+              {/* Right: Filters + Table */}
+              <div style={{ flex: 1, display: "flex", flexDirection: "column", minWidth: 0 }}>
+                <Filters search={search} onSearchChange={setSearch} scoreMin={scoreMin} onScoreChange={setScoreMin} isMobile={false} />
+
+                {loading && (
+                  <div style={{ textAlign: "center", padding: "3rem", color: "var(--txt3)", fontSize: 13 }}>
+                    Cargando aplicaciones…
+                  </div>
+                )}
+                {error && (
+                  <div style={{ margin: "12px 16px", background: "rgba(224,23,106,.1)", border: "1px solid rgba(224,23,106,.25)", borderRadius: 8, padding: "10px 14px", fontSize: 12, color: "#ff6b9d" }}>
+                    {error}
+                  </div>
+                )}
+                {!loading && !error && (
+                  <div style={{ flex: 1, overflow: "auto" }}>
+                    <JobTable
+                      apps={paginatedApps}
+                      sortField={sortField}
+                      sortAsc={sortAsc}
+                      onSort={handleSort}
+                      onStatusUpdate={handleStatusUpdate}
+                      onGenerateInterview={handleGenerateInterview}
+                      onGenerateCv={handleGenerateCv}
+                      generatingInterviewIds={generatingInterviewIds}
+                      generatingCvIds={generatingCvIds}
+                      isMobile={false}
+                    />
+                  </div>
+                )}
+{!loading && !error && <PaginationBar currentPage={currentPage} totalPages={totalPages} onChange={setCurrentPage} />}
+              </div>
             </div>
-          )}
-          {!loading && !error && (
-            <JobTable
-              apps={filtered}
-              sortField={sortField}
-              sortAsc={sortAsc}
-              onSort={handleSort}
-              onStatusUpdate={handleStatusUpdate}
-              onGenerateInterview={handleGenerateInterview}
-              onGenerateCv={handleGenerateCv}
-              generatingInterviewIds={generatingInterviewIds}
-              generatingCvIds={generatingCvIds}
-              isMobile={isMobile}
-            />
           )}
         </main>
       </div>
+    </div>
+  );
+}
+
+function PaginationBar({ currentPage, totalPages, onChange }: { currentPage: number; totalPages: number; onChange: (p: number) => void }) {
+  if (totalPages <= 1) return null;
+
+  const btn = (label: string, disabled: boolean, onClick: () => void) => (
+    <button
+      disabled={disabled}
+      onClick={onClick}
+      style={{
+        padding: "4px 12px", borderRadius: 6, fontSize: 11,
+        fontFamily: "'Outfit', sans-serif", fontWeight: 500,
+        background: disabled ? "rgba(255,255,255,.03)" : "rgba(255,255,255,.06)",
+        border: "1px solid var(--border)", color: disabled ? "var(--txt3)" : "var(--txt2)",
+        cursor: disabled ? "default" : "pointer", opacity: disabled ? .4 : 1,
+        transition: "all .15s",
+      }}
+      onMouseEnter={e => { if (!disabled) { (e.currentTarget as HTMLElement).style.borderColor = "rgba(224,23,106,.4)"; (e.currentTarget as HTMLElement).style.color = "var(--mag)"; }}}
+      onMouseLeave={e => { if (!disabled) { (e.currentTarget as HTMLElement).style.borderColor = "var(--border)"; (e.currentTarget as HTMLElement).style.color = "var(--txt2)"; }}}
+    >
+      {label}
+    </button>
+  );
+
+  return (
+    <div style={{
+      display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+      padding: "10px 16px", borderTop: "1px solid var(--border)",
+      background: "rgba(255,255,255,.015)",
+    }}>
+      {btn("◀ Anterior", currentPage === 1, () => onChange(currentPage - 1))}
+      <span style={{ fontSize: 11, fontFamily: "'DM Mono', monospace", color: "var(--txt2)", padding: "0 4px" }}>
+        {currentPage} / {totalPages}
+      </span>
+      {btn("Siguiente ▶", currentPage === totalPages, () => onChange(currentPage + 1))}
     </div>
   );
 }

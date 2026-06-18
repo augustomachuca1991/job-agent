@@ -1,6 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import MarkdownIt from "markdown-it";
+import { openCvPdfPrintWindow, generateDocxFromMarkdown } from "../lib/exportDocument";
 
 const md = new MarkdownIt({ html: false, linkify: true });
 
@@ -10,8 +11,18 @@ interface Props {
   onClose: () => void;
 }
 
+function downloadBlob(blob: Blob, filename: string) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 export default function CvModal({ company, content, onClose }: Props) {
   const overlayRef = useRef<HTMLDivElement>(null);
+  const [generatingWord, setGeneratingWord] = useState(false);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -22,6 +33,36 @@ export default function CvModal({ company, content, onClose }: Props) {
   }, [onClose]);
 
   const html = md.render(content);
+  const safeCompany = company.replace(/[^a-zA-Z0-9]/g, "_");
+
+  const handleDownloadMd = () => {
+    const blob = new Blob([content], { type: "text/markdown" });
+    downloadBlob(blob, `MachucaFernandoAugustoCV-${safeCompany}.md`);
+  };
+
+  const handleDownloadPdf = () => {
+    openCvPdfPrintWindow(content, `CV - ${company}`);
+  };
+
+  const handleDownloadWord = async () => {
+    setGeneratingWord(true);
+    try {
+      const blob = await generateDocxFromMarkdown(content);
+      downloadBlob(blob, `MachucaFernandoAugustoCV-${safeCompany}.docx`);
+    } catch (err) {
+      console.error("Error generando el Word:", err);
+    } finally {
+      setGeneratingWord(false);
+    }
+  };
+
+  const actionButtonStyle: React.CSSProperties = {
+    display: "inline-flex", alignItems: "center", gap: 4,
+    background: "none", border: "1px solid rgba(255,107,43,.3)", color: "#ff6b2b",
+    borderRadius: 6, padding: "4px 10px", cursor: "pointer",
+    fontSize: 10, fontFamily: "'Outfit', sans-serif",
+    transition: "all .15s",
+  };
 
   return createPortal(
     <div
@@ -57,33 +98,36 @@ export default function CvModal({ company, content, onClose }: Props) {
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
             <button
-              onClick={() => {
-                const blob = new Blob([content], { type: "text/markdown" });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement("a");
-                a.href = url;
-                a.download = `MachucaFernandoAugustoCV-${company.replace(/[^a-zA-Z0-9]/g, "_")}.md`;
-                a.click();
-                URL.revokeObjectURL(url);
-              }}
-              style={{
-                display: "inline-flex", alignItems: "center", gap: 4,
-                background: "none", border: "1px solid rgba(255,107,43,.3)", color: "#ff6b2b",
-                borderRadius: 6, padding: "4px 10px", cursor: "pointer",
-                fontSize: 10, fontFamily: "'Outfit', sans-serif",
-                transition: "all .15s",
-              }}
-              onMouseEnter={e => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.borderColor = "rgba(255,107,43,.5)";
-                el.style.background = "rgba(255,107,43,.1)";
-              }}
-              onMouseLeave={e => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.borderColor = "rgba(255,107,43,.3)";
-                el.style.background = "none";
-              }}
-              aria-label="Descargar CV"
+              onClick={handleDownloadPdf}
+              style={actionButtonStyle}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(255,107,43,.1)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "none"; }}
+              aria-label="Descargar PDF"
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              PDF
+            </button>
+            <button
+              onClick={handleDownloadWord}
+              disabled={generatingWord}
+              style={{ ...actionButtonStyle, opacity: generatingWord ? 0.5 : 1 }}
+              onMouseEnter={e => { if (!generatingWord) (e.currentTarget as HTMLElement).style.background = "rgba(255,107,43,.1)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "none"; }}
+              aria-label="Descargar Word"
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              {generatingWord ? "..." : "Word"}
+            </button>
+            <button
+              onClick={handleDownloadMd}
+              style={actionButtonStyle}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(255,107,43,.1)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "none"; }}
+              aria-label="Descargar Markdown"
             >
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" />
