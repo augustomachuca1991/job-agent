@@ -1,138 +1,325 @@
+import { useEffect, useRef, useState } from "react";
 import type { Application } from "../types";
+import InterviewModal from "./InterviewModal";
+import CvModal from "./CvModal";
 
 interface Props {
   job: Application;
+  index: number;
   onStatusUpdate: (id: string, status: string) => void;
+  onGenerateInterview: (id: string, company: string, title: string) => void;
+  onGenerateCv: (id: string) => void;
+  generatingInterview: boolean;
+  generatingCv: boolean;
 }
 
-const STATUS_OPTIONS = ["NEW", "APPLIED", "INTERVIEW", "REJECTED"];
-
-const STATUS_STYLES: Record<string, { pill: string; dot: string }> = {
-  NEW: { pill: "bg-blue-50 text-blue-700", dot: "bg-blue-500" },
-  APPLIED: { pill: "bg-emerald-50 text-emerald-700", dot: "bg-emerald-500" },
-  INTERVIEW: { pill: "bg-violet-50 text-violet-700", dot: "bg-violet-600" },
-  REJECTED: { pill: "bg-red-50 text-red-600", dot: "bg-red-400" },
+const STATUS_CONFIG: Record<string, { label: string; bg: string; border: string; color: string; dot: string }> = {
+  NEW: { label: "Nuevo", bg: "rgba(6,182,212,.1)", border: "rgba(6,182,212,.25)", color: "#06b6d4", dot: "#06b6d4" },
+  APPLIED: { label: "Aplicado", bg: "rgba(255,107,43,.1)", border: "rgba(255,107,43,.25)", color: "#ff6b2b", dot: "#ff6b2b" },
+  INTERVIEW: { label: "Entrevista", bg: "rgba(168,85,247,.12)", border: "rgba(168,85,247,.3)", color: "#c084fc", dot: "#a855f7" },
+  REJECTED: { label: "Rechazado", bg: "rgba(255,255,255,.04)", border: "rgba(255,255,255,.08)", color: "#5a4566", dot: "#5a4566" },
 };
 
-const STATUS_LABELS: Record<string, string> = {
-  NEW: "Nuevo",
-  APPLIED: "Aplicado",
-  INTERVIEW: "Entrevista",
-  REJECTED: "Rechazado",
+const ALL_STATUSES = ["NEW", "APPLIED", "INTERVIEW", "REJECTED"];
+
+const TRANSITIONS: Record<string, string[]> = {
+  NEW: ["APPLIED", "REJECTED"],
+  APPLIED: ["INTERVIEW", "REJECTED"],
+  INTERVIEW: ["REJECTED"],
+  REJECTED: [],
 };
 
-function scoreColor(score: number) {
-  if (score >= 85) return { bar: "bg-emerald-500", text: "text-emerald-600" };
-  if (score >= 70) return { bar: "bg-amber-400", text: "text-amber-600" };
-  return { bar: "bg-red-400", text: "text-red-500" };
+function scoreStyle(s: number) {
+  if (s >= 85) return { grad: "linear-gradient(90deg,#e0176a,#ff6b2b)", color: "#ff6b2b" };
+  if (s >= 70) return { grad: "linear-gradient(90deg,#7c3aed,#e0176a)", color: "#e0176a" };
+  return { grad: "rgba(255,255,255,.15)", color: "#5a4566" };
 }
 
-export default function JobRow({ job, onStatusUpdate }: Props) {
+const LINKS = [
+  { key: "job_url" as const, label: "Job", icon: <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg> },
+  { key: "cv_url" as const, label: "CV", icon: <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /></svg> },
+  { key: "cover_url" as const, label: "Cover", icon: <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg> },
+];
+
+export default function JobRow({ job, index, onStatusUpdate, onGenerateInterview, onGenerateCv, generatingInterview, generatingCv }: Props) {
+  const [showInterviewModal, setShowInterviewModal] = useState(false);
+  const [showCvModal, setShowCvModal] = useState(false);
+  const rowRef = useRef<HTMLTableRowElement>(null);
   const score = job.score ?? 0;
-  const colors = scoreColor(score);
+  const ss = scoreStyle(score);
   const status = job.status || "NEW";
-  const styles = STATUS_STYLES[status] ?? STATUS_STYLES.NEW;
-
+  const sc = STATUS_CONFIG[status] ?? STATUS_CONFIG.NEW;
   const date = job.created_at
     ? new Date(job.created_at).toLocaleDateString("es-AR", { day: "2-digit", month: "short" })
     : "—";
+  const nextStatuses = TRANSITIONS[status] ?? [];
+  const isTerminal = status === "REJECTED";
+  const hasInterview = !!job.interview_notes;
+  const hasCv = !!job.cv_notes;
 
-  const links = [
-    job.job_url && { href: job.job_url, label: "Job", icon: ExternalLinkIcon },
-    job.cv_url && { href: job.cv_url, label: "CV", icon: FileIcon },
-    job.cover_url && { href: job.cover_url, label: "Cover", icon: MailIcon },
-  ].filter(Boolean) as { href: string; label: string; icon: React.FC }[];
+  useEffect(() => {
+    const el = rowRef.current;
+    if (!el) return;
+    el.style.opacity = "0";
+    el.style.transform = "translateX(-6px)";
+    const t = setTimeout(() => {
+      el.style.transition = "opacity .2s ease, transform .2s ease";
+      el.style.opacity = "1";
+      el.style.transform = "none";
+    }, index * 20);
+    return () => clearTimeout(t);
+  }, [index]);
+
+  const handleStatusChange = (newStatus: string) => {
+    if (newStatus === status) return;
+    if (!nextStatuses.includes(newStatus)) return;
+    onStatusUpdate(job.id, newStatus);
+    if (newStatus === "INTERVIEW" && !hasInterview) {
+      onGenerateInterview(job.id, job.company, job.title);
+    }
+  };
+
+  const tdStyle: React.CSSProperties = {
+    padding: "9px 14px", borderBottom: "1px solid rgba(255,255,255,.03)", verticalAlign: "middle",
+  };
 
   return (
-    <tr className="group border-b border-gray-100 last:border-0 hover:bg-gray-50/60 transition-colors">
-      {/* Company + Title */}
-      <td className="px-5 py-3">
-        <div className="text-sm font-medium text-gray-900 leading-snug">{job.company}</div>
-        <div className="text-xs text-gray-500 mt-0.5 leading-snug">{job.title}</div>
-      </td>
+    <>
+      <tr
+        ref={rowRef}
+        onMouseEnter={e => { Array.from((e.currentTarget as HTMLTableRowElement).cells).forEach(td => { td.style.background = "rgba(255,255,255,.025)"; }); }}
+        onMouseLeave={e => { Array.from((e.currentTarget as HTMLTableRowElement).cells).forEach(td => { td.style.background = "transparent"; }); }}
+      >
+        {/* Company */}
+        <td style={tdStyle}>
+          <div style={{ fontWeight: 600, fontSize: 12, color: "var(--txt)" }}>{job.company}</div>
+          <div style={{ fontSize: 10, color: "var(--txt3)", marginTop: 1 }}>{job.title}</div>
+        </td>
 
-      {/* Score bar */}
-      <td className="px-5 py-3">
-        {job.score != null && (
-          <div className="flex items-center gap-2">
-            <div className="w-14 h-1.5 rounded-full bg-gray-100 overflow-hidden">
-              <div
-                className={`h-full rounded-full ${colors.bar}`}
-                style={{ width: `${score}%` }}
-              />
+        {/* Score bar */}
+        <td style={tdStyle}>
+          <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
+            <div style={{ width: 48, height: 3, borderRadius: 2, background: "rgba(255,255,255,.06)", overflow: "hidden" }}>
+              <div style={{ height: "100%", borderRadius: 2, width: `${score}%`, background: ss.grad, transition: "width .5s cubic-bezier(.4,0,.2,1)" }} />
             </div>
-            <span className={`text-xs font-mono font-medium ${colors.text}`}>{score}</span>
+            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 500, color: ss.color, minWidth: 22 }}>
+              {score}
+            </span>
           </div>
-        )}
-      </td>
+        </td>
 
-      {/* Status pill + select */}
-      <td className="px-5 py-3">
-        <div className="relative inline-flex">
-          <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium ${styles.pill}`}>
-            <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${styles.dot}`} />
-            {STATUS_LABELS[status] ?? status}
-          </span>
-          {/* Invisible select overlaid for interaction */}
-          <select
-            value={status}
-            onChange={(e) => onStatusUpdate(job.id, e.target.value)}
-            className="absolute inset-0 opacity-0 cursor-pointer w-full"
-            aria-label={`Estado de ${job.company}`}
-          >
-            {STATUS_OPTIONS.map((s) => (
-              <option key={s} value={s}>{STATUS_LABELS[s]}</option>
-            ))}
-          </select>
-        </div>
-      </td>
+        {/* Status pill + hidden select */}
+        <td style={tdStyle}>
+          {isTerminal ? (
+            <span style={{
+              display: "inline-flex", alignItems: "center", gap: 5,
+              padding: "3px 9px", borderRadius: 20,
+              background: sc.bg, border: `1px solid ${sc.border}`, color: sc.color,
+              fontSize: 9, fontWeight: 600, letterSpacing: ".05em",
+            }}>
+              <span style={{ width: 5, height: 5, borderRadius: "50%", background: sc.dot, boxShadow: `0 0 5px ${sc.dot}99`, flexShrink: 0 }} />
+              {sc.label}
+            </span>
+          ) : (
+            <span style={{
+              display: "inline-flex", alignItems: "center", gap: 5,
+              padding: "3px 9px", borderRadius: 20,
+              background: sc.bg, border: `1px solid ${sc.border}`, color: sc.color,
+              fontSize: 9, fontWeight: 600, letterSpacing: ".05em",
+              position: "relative", cursor: "pointer", overflow: "hidden",
+            }}>
+              {generatingInterview ? (
+                <span style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                  <span style={{
+                    width: 5, height: 5, borderRadius: "50%", background: sc.dot, flexShrink: 0,
+                    animation: "genPulse .8s ease-in-out infinite",
+                  }} />
+                  <style>{`@keyframes genPulse{0%,100%{opacity:1}50%{opacity:.3}}`}</style>
+                  Generando…
+                </span>
+              ) : (
+                <>
+                  <span style={{ width: 5, height: 5, borderRadius: "50%", background: sc.dot, boxShadow: `0 0 5px ${sc.dot}99`, flexShrink: 0 }} />
+                  {sc.label}
+                </>
+              )}
+              {!generatingInterview && (
+                <select
+                  value={status}
+                  onChange={e => handleStatusChange(e.target.value)}
+                  style={{ position: "absolute", inset: 0, opacity: 0, cursor: "pointer", width: "100%" }}
+                  aria-label={`Estado de ${job.company}`}
+                >
+                  {ALL_STATUSES.map(s => (
+                    <option key={s} value={s} style={{ background: "#1a0e20", color: "#f0e8f5" }}>
+                      {STATUS_CONFIG[s]?.label ?? s}
+                    </option>
+                  ))}
+                </select>
+              )}
+            </span>
+          )}
+        </td>
 
-      {/* Date */}
-      <td className="px-5 py-3">
-        <span className="text-xs font-mono text-gray-400">{date}</span>
-      </td>
+        {/* Date */}
+        <td style={tdStyle}>
+          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: "var(--txt3)" }}>{date}</span>
+        </td>
 
-      {/* Links */}
-      <td className="px-5 py-3">
-        <div className="flex items-center gap-1.5">
-          {links.map(({ href, label, icon: Icon }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 px-2 py-1 text-[11px] text-gray-500 border border-gray-200 rounded-md bg-white hover:text-gray-800 hover:border-gray-300 transition-colors"
-            >
-              <Icon />
-              {label}
-            </a>
-          ))}
-        </div>
-      </td>
-    </tr>
-  );
-}
+        {/* Links */}
+        <td style={tdStyle}>
+          <div style={{ display: "flex", gap: 4 }}>
+            {LINKS.map(({ key, label, icon }) => {
+              const href = job[key] as string | undefined;
+              if (!href) return null;
+              return (
+                <a
+                  key={key}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-flex", alignItems: "center", gap: 3,
+                    padding: "2px 7px", borderRadius: 5,
+                    border: "1px solid var(--border)", color: "var(--txt3)",
+                    textDecoration: "none", background: "rgba(255,255,255,.03)",
+                    fontSize: 10, fontFamily: "'Outfit', sans-serif",
+                    transition: "all .15s",
+                  }}
+                  onMouseEnter={e => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.borderColor = "rgba(224,23,106,.4)";
+                    el.style.color = "var(--mag)";
+                    el.style.background = "rgba(224,23,106,.07)";
+                    el.style.boxShadow = "0 0 10px rgba(224,23,106,.12)";
+                  }}
+                  onMouseLeave={e => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.borderColor = "var(--border)";
+                    el.style.color = "var(--txt3)";
+                    el.style.background = "rgba(255,255,255,.03)";
+                    el.style.boxShadow = "none";
+                  }}
+                >
+                  {icon}{label}
+                </a>
+              );
+            })}
+            {hasCv ? (
+              <button
+                onClick={() => setShowCvModal(true)}
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 3,
+                  padding: "2px 7px", borderRadius: 5,
+                  border: "1px solid rgba(6,182,212,.3)", color: "#06b6d4",
+                  background: "rgba(6,182,212,.08)",
+                  fontSize: 10, fontFamily: "'Outfit', sans-serif",
+                  cursor: "pointer", transition: "all .15s",
+                }}
+                onMouseEnter={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.borderColor = "rgba(6,182,212,.5)";
+                  el.style.background = "rgba(6,182,212,.15)";
+                  el.style.boxShadow = "0 0 10px rgba(6,182,212,.15)";
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.borderColor = "rgba(6,182,212,.3)";
+                  el.style.background = "rgba(6,182,212,.08)";
+                  el.style.boxShadow = "none";
+                }}
+              >
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2M9 5h6" /><polyline points="9 14 11 16 15 12" />
+                </svg>
+                CV
+              </button>
+            ) : (
+              <button
+                onClick={() => !generatingCv && onGenerateCv(job.id)}
+                disabled={generatingCv}
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 3,
+                  padding: "2px 7px", borderRadius: 5,
+                  border: generatingCv ? "1px solid var(--border)" : "1px solid rgba(255,107,43,.3)",
+                  color: generatingCv ? "var(--txt3)" : "#ff6b2b",
+                  background: generatingCv ? "rgba(255,255,255,.03)" : "rgba(255,107,43,.08)",
+                  fontSize: 10, fontFamily: "'Outfit', sans-serif",
+                  cursor: generatingCv ? "default" : "pointer",
+                  transition: "all .15s",
+                  opacity: generatingCv ? 0.5 : 1,
+                }}
+                onMouseEnter={e => {
+                  if (!generatingCv) {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.borderColor = "rgba(255,107,43,.5)";
+                    el.style.background = "rgba(255,107,43,.15)";
+                    el.style.boxShadow = "0 0 10px rgba(255,107,43,.15)";
+                  }
+                }}
+                onMouseLeave={e => {
+                  if (!generatingCv) {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.borderColor = "rgba(255,107,43,.3)";
+                    el.style.background = "rgba(255,107,43,.08)";
+                    el.style.boxShadow = "none";
+                  }
+                }}
+              >
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="12" y1="18" x2="12" y2="12" /><line x1="9" y1="15" x2="15" y2="15" />
+                </svg>
+                {generatingCv ? "…" : "Gen. CV"}
+              </button>
+            )}
+            {hasInterview && (
+              <button
+                onClick={() => setShowInterviewModal(true)}
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 3,
+                  padding: "2px 7px", borderRadius: 5,
+                  border: "1px solid rgba(168,85,247,.3)", color: "#c084fc",
+                  background: "rgba(168,85,247,.08)",
+                  fontSize: 10, fontFamily: "'Outfit', sans-serif",
+                  cursor: "pointer", transition: "all .15s",
+                }}
+                onMouseEnter={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.borderColor = "rgba(168,85,247,.5)";
+                  el.style.background = "rgba(168,85,247,.15)";
+                  el.style.boxShadow = "0 0 10px rgba(168,85,247,.15)";
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.borderColor = "rgba(168,85,247,.3)";
+                  el.style.background = "rgba(168,85,247,.08)";
+                  el.style.boxShadow = "none";
+                }}
+              >
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+                Interview
+              </button>
+            )}
+          </div>
+        </td>
+      </tr>
 
-function ExternalLinkIcon() {
-  return (
-    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" />
-    </svg>
-  );
-}
-
-function FileIcon() {
-  return (
-    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" />
-    </svg>
-  );
-}
-
-function MailIcon() {
-  return (
-    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" />
-    </svg>
+      {showInterviewModal && (
+        <InterviewModal
+          company={job.company}
+          content={job.interview_notes!}
+          onClose={() => setShowInterviewModal(false)}
+        />
+      )}
+      {showCvModal && (
+        <CvModal
+          company={job.company}
+          content={job.cv_notes!}
+          onClose={() => setShowCvModal(false)}
+        />
+      )}
+    </>
   );
 }

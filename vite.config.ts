@@ -14,7 +14,7 @@ export default defineConfig({
         name: "Job Agent Dashboard",
         short_name: "Job Agent",
         description: "Dashboard de aplicaciones laborales",
-        theme_color: "#1e293b",
+        theme_color: "#0d0710",
         background_color: "#f8fafc",
         display: "standalone",
         scope: "/",

@@ -29,19 +29,14 @@ async function uploadToStorage(localPath, storagePath, contentType) {
 }
 
 async function uploadFile(base, suffix, folder) {
-  const pdfPath = path.join("generated", `${base}-${suffix}.pdf`);
   const mdPath = path.join("generated", `${base}-${suffix}.md`);
-  let pdfUrl = null;
-
-  if (fs.existsSync(pdfPath)) {
-    pdfUrl = await uploadToStorage(pdfPath, `${folder}/${base}-${suffix}.pdf`, "application/pdf");
-  }
+  let mdUrl = null;
 
   if (fs.existsSync(mdPath)) {
-    await uploadToStorage(mdPath, `${folder}/${base}-${suffix}.md`, "text/markdown");
+    mdUrl = await uploadToStorage(mdPath, `${folder}/${base}-${suffix}.md`, "text/markdown");
   }
 
-  return pdfUrl;
+  return mdUrl;
 }
 
 let saved = 0;
@@ -104,7 +99,7 @@ console.log(`\nSaved ${saved} / ${eligible.length} eligible jobs${failed ? ` (${
 
 // Limpiar archivos locales del generated/
 if (fs.existsSync("generated")) {
-  const files = fs.readdirSync("generated").filter((f) => f !== ".gitkeep" && f.endsWith(".pdf"));
+  const files = fs.readdirSync("generated").filter((f) => f !== ".gitkeep" && f.endsWith(".md"));
   for (const f of files) {
     fs.unlinkSync(path.join("generated", f));
   }

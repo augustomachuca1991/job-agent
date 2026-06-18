@@ -1,0 +1,28 @@
+Genera una guía de preparación para una entrevista técnica para el siguiente puesto.
+
+## Perfil del candidato
+{{PROFILE}}
+
+## Puesto
+- Empresa: {{COMPANY_NAME}}
+- Título: {{JOB_TITLE}}
+- Descripción: {{JOB_DESCRIPTION}}
+
+Genera SOLO preguntas técnicas con sus respuestas, en formato Markdown. Sin introducciones ni despedidas.
+
+Para cada pregunta:
+- **Pregunta**: [formula la pregunta técnica]
+- **Respuesta**: [respuesta concisa y correcta con ejemplos de código si aplica]
+
+Cubre las áreas técnicas más relevantes para este puesto específico. Usa español.
+
+Formato de salida:
+```markdown
+## [Área técnica]
+
+### Pregunta 1: [pregunta]
+**Respuesta:** [respuesta]
+
+### Pregunta 2: [pregunta]
+**Respuesta:** [respuesta]
+```

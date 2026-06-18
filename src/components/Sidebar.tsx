@@ -4,113 +4,157 @@ interface Props {
   apps: Application[];
   statusFilter: string;
   onStatusChange: (v: string) => void;
-  onDisconnect: () => void;
-  isOpen: boolean;
-  onToggle: () => void;
+  isMobile: boolean;
 }
 
 const STATUS_NAV = [
-  { value: "all", label: "Todos", color: "" },
-  { value: "NEW", label: "Nuevo", color: "#3B82F6" },
-  { value: "APPLIED", label: "Aplicado", color: "#10B981" },
-  { value: "INTERVIEW", label: "Entrevista", color: "#7C3AED" },
-  { value: "REJECTED", label: "Rechazado", color: "#EF4444" },
+  { value: "all", label: "Todos", dot: null, glow: null },
+  { value: "NEW", label: "Nuevo", dot: "#06b6d4", glow: "rgba(6,182,212,.35)" },
+  { value: "APPLIED", label: "Aplicado", dot: "#ff6b2b", glow: "rgba(255,107,43,.35)" },
+  { value: "INTERVIEW", label: "Entrevista", dot: "#a855f7", glow: "rgba(168,85,247,.35)" },
+  { value: "REJECTED", label: "Rechazado", dot: "#5a4566", glow: null },
 ];
 
-export default function Sidebar({ apps, statusFilter, onStatusChange, onDisconnect, isOpen, onToggle }: Props) {
+export default function Sidebar({ apps, statusFilter, onStatusChange, isMobile }: Props) {
   const total = apps.length;
   const avg = total > 0 ? Math.round(apps.reduce((s, j) => s + (j.score ?? 0), 0) / total) : 0;
-  const newCount = apps.filter((j) => j.status === "NEW").length;
+  const newC = apps.filter(j => j.status === "NEW").length;
 
-  const countFor = (val: string) =>
-    val === "all" ? total : apps.filter((j) => j.status === val).length;
+  const countFor = (v: string) => v === "all" ? total : apps.filter(j => j.status === v).length;
 
-  return (
-    <>
-      {/* Mobile backdrop */}
-      {isOpen && (
-        <div className="fixed inset-0 bg-black/20 z-30 md:hidden" onClick={onToggle} />
-      )}
-
-      {/* Sidebar */}
-      <aside
-        className={`
-          fixed inset-y-0 left-0 z-40 w-52 bg-gray-50 border-r border-gray-200 p-5
-          flex flex-col gap-6
-          transform transition-transform duration-200 ease-in-out
-          ${isOpen ? "translate-x-0" : "-translate-x-full"}
-          md:relative md:translate-x-0 md:z-auto md:min-h-full
-        `}
-      >
-        {/* Logo + close (mobile) */}
-        <div className="flex items-center justify-between pb-4 border-b border-gray-200">
-          <img src="/logo.svg" alt="Job Agent" className="h-7" />
-          <button
-            onClick={onToggle}
-            className="p-1 -mr-1 rounded-md text-gray-400 hover:text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer border-0 md:hidden"
-            aria-label="Cerrar menú"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          </button>
-        </div>
-
-        {/* Stats */}
-        <div className="flex flex-col gap-2">
-          <StatCard value={total} label="aplicaciones" accent />
-          <StatCard value={avg} label="score promedio" />
-          <StatCard value={newCount} label="sin revisar" />
-        </div>
-
-        {/* Status nav */}
-        <div className="flex flex-col gap-0.5">
-          <p className="text-[11px] text-gray-400 uppercase tracking-wider mb-1.5">Estado</p>
-          {STATUS_NAV.map(({ value, label, color }) => (
-            <button
-              key={value}
-              onClick={() => { onStatusChange(value); onToggle(); }}
-              className={`flex items-center justify-between w-full px-2 py-1.5 rounded-md text-left text-[13px] transition-colors cursor-pointer border-0
-                ${statusFilter === value
-                  ? "bg-white font-medium text-gray-900 shadow-sm ring-1 ring-gray-200"
-                  : "text-gray-600 hover:bg-white hover:text-gray-900"
-                }`}
-            >
-              <span className="flex items-center gap-2">
-                {color && (
-                  <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: color }} />
-                )}
-                {label}
-              </span>
-              <span className="text-[11px] font-mono text-gray-400">{countFor(value)}</span>
-            </button>
+  if (isMobile) {
+    return (
+      <aside style={{
+        width: 220, flexShrink: 0,
+        background: "rgba(13,7,16,.98)",
+        borderRight: "1px solid var(--border)",
+        padding: "14px 12px",
+        display: "flex", flexDirection: "column", gap: 14,
+        height: "100%", overflowY: "auto",
+      }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          {[
+            { val: total, label: "aplicaciones", grad: "linear-gradient(135deg,#e0176a,#ff6b2b)" },
+            { val: avg, label: "score promedio", grad: "linear-gradient(135deg,#ff6b2b,#a855f7)" },
+            { val: newC, label: "sin revisar", grad: "linear-gradient(135deg,#a855f7,#06b6d4)" },
+          ].map(({ val, label, grad }) => (
+            <div key={label} style={{
+              background: "rgba(255,255,255,.03)", border: "1px solid var(--border)",
+              borderRadius: 10, padding: "8px 10px",
+            }}>
+              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 18, fontWeight: 700, lineHeight: 1, background: grad, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                {val}
+              </div>
+              <div style={{ fontSize: 9, color: "var(--txt3)", textTransform: "uppercase", letterSpacing: ".08em", marginTop: 2 }}>{label}</div>
+            </div>
           ))}
         </div>
 
-        {/* Disconnect */}
-        <div className="mt-auto pt-4 border-t border-gray-200">
-          <button
-            onClick={onDisconnect}
-            className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-gray-600 transition-colors cursor-pointer bg-transparent border-0"
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" />
-            </svg>
-            Desconectar
-          </button>
+        <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <p style={{ fontSize: 10, color: "var(--txt3)", textTransform: "uppercase", letterSpacing: ".1em", marginBottom: 4, fontWeight: 600 }}>Estado</p>
+          {STATUS_NAV.map(({ value, label, dot, glow }) => {
+            const active = statusFilter === value;
+            return (
+              <button
+                key={value}
+                onClick={() => onStatusChange(value)}
+                style={{
+                  display: "flex", alignItems: "center", justifyContent: "space-between",
+                  width: "100%", padding: "6px 8px", borderRadius: 8,
+                  border: `1px solid ${active ? "rgba(224,23,106,.3)" : "transparent"}`,
+                  background: active ? "linear-gradient(135deg,rgba(224,23,106,.1),rgba(255,107,43,.07))" : "transparent",
+                  cursor: "pointer", fontFamily: "'Outfit', sans-serif",
+                  fontSize: 11, color: active ? "var(--txt)" : "var(--txt2)",
+                  transition: "all .15s",
+                }}
+                onMouseEnter={e => { if (!active) { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,.03)"; (e.currentTarget as HTMLElement).style.color = "var(--txt)"; } }}
+                onMouseLeave={e => { if (!active) { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = "var(--txt2)"; } }}
+              >
+                <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                  {dot && (
+                    <span style={{ width: 6, height: 6, borderRadius: "50%", background: dot, flexShrink: 0, boxShadow: active && glow ? `0 0 6px ${glow}` : "none" }} />
+                  )}
+                  {!dot && <span style={{ width: 6, height: 6, flexShrink: 0 }} />}
+                  {label}
+                </span>
+                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: "var(--txt3)" }}>
+                  {countFor(value)}
+                </span>
+              </button>
+            );
+          })}
         </div>
       </aside>
-    </>
-  );
-}
+    );
+  }
 
-function StatCard({ value, label, accent = false }: { value: number; label: string; accent?: boolean }) {
   return (
-    <div className="bg-white rounded-lg border border-gray-200 px-3 py-2.5">
-      <div className={`text-xl font-medium font-mono leading-tight ${accent ? "text-indigo-600" : "text-gray-900"}`}>
-        {value}
+    <aside style={{
+      width: 180, flexShrink: 0,
+      background: "rgba(13,7,16,.6)", backdropFilter: "blur(20px)",
+      borderRight: "1px solid var(--border)",
+      padding: "18px 14px",
+      display: "flex", flexDirection: "column", gap: 20,
+    }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        {[
+          { val: total, label: "aplicaciones", grad: "linear-gradient(135deg,#e0176a,#ff6b2b)" },
+          { val: avg, label: "score promedio", grad: "linear-gradient(135deg,#ff6b2b,#a855f7)" },
+          { val: newC, label: "sin revisar", grad: "linear-gradient(135deg,#a855f7,#06b6d4)" },
+        ].map(({ val, label, grad }) => (
+          <div key={label} style={{
+            background: "rgba(255,255,255,.03)", border: "1px solid var(--border)",
+            borderRadius: 10, padding: "10px 12px",
+            transition: "border-color .2s",
+          }}
+            onMouseEnter={e => (e.currentTarget.style.borderColor = "var(--border2)")}
+            onMouseLeave={e => (e.currentTarget.style.borderColor = "var(--border)")}
+          >
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 22, fontWeight: 700, lineHeight: 1, background: grad, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              {val}
+            </div>
+            <div style={{ fontSize: 10, color: "var(--txt3)", textTransform: "uppercase", letterSpacing: ".08em", marginTop: 3 }}>{label}</div>
+          </div>
+        ))}
       </div>
-      <div className="text-[11px] text-gray-400 uppercase tracking-wider mt-0.5">{label}</div>
-    </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+        <p style={{ fontSize: 10, color: "var(--txt3)", textTransform: "uppercase", letterSpacing: ".1em", marginBottom: 6, fontWeight: 600 }}>Estado</p>
+        {STATUS_NAV.map(({ value, label, dot, glow }) => {
+          const active = statusFilter === value;
+          return (
+            <button
+              key={value}
+              onClick={() => onStatusChange(value)}
+              style={{
+                display: "flex", alignItems: "center", justifyContent: "space-between",
+                width: "100%", padding: "7px 10px", borderRadius: 8,
+                border: `1px solid ${active ? "rgba(224,23,106,.3)" : "transparent"}`,
+                background: active ? "linear-gradient(135deg,rgba(224,23,106,.1),rgba(255,107,43,.07))" : "transparent",
+                cursor: "pointer", fontFamily: "'Outfit', sans-serif",
+                fontSize: 12, color: active ? "var(--txt)" : "var(--txt2)",
+                transition: "all .15s",
+              }}
+              onMouseEnter={e => { if (!active) { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,.03)"; (e.currentTarget as HTMLElement).style.color = "var(--txt)"; } }}
+              onMouseLeave={e => { if (!active) { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = "var(--txt2)"; } }}
+            >
+              <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                {dot && (
+                  <span style={{
+                    width: 7, height: 7, borderRadius: "50%", background: dot, flexShrink: 0,
+                    boxShadow: active && glow ? `0 0 6px ${glow}` : "none",
+                  }} />
+                )}
+                {!dot && <span style={{ width: 7, height: 7, flexShrink: 0 }} />}
+                {label}
+              </span>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: "var(--txt3)" }}>
+                {countFor(value)}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+    </aside>
   );
 }

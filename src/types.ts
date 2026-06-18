@@ -6,6 +6,8 @@ export interface Application {
   job_url: string | null;
   cv_url: string | null;
   cover_url: string | null;
+  interview_notes: string | null;
+  cv_notes: string | null;
   status: string;
   created_at: string | null;
 }

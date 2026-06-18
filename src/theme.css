@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Bebas+Neue&display=swap");
+
+:root {
+  --bg: #0d0710;
+  --bg2: #130b18;
+  --bg3: #1a0e20;
+  --mag: #e0176a;
+  --mag2: #ff2d7a;
+  --oran: #ff6b2b;
+  --pur: #7c3aed;
+  --txt: #f0e8f5;
+  --txt2: #a889b8;
+  --txt3: #5a4566;
+  --card: rgba(255, 255, 255, 0.04);
+  --border: rgba(255, 255, 255, 0.08);
+  --border2: rgba(255, 255, 255, 0.15);
+  --grad-main: linear-gradient(135deg, var(--mag), var(--oran));
+  --grad-alt: linear-gradient(135deg, var(--pur), var(--mag));
+  --shadow-mag: 0 0 20px rgba(224, 23, 106, 0.3);
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  background: var(--bg);
+  color: var(--txt);
+}
+
+.interview-content h2 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #c084fc;
+  margin: 20px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.interview-content h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--txt);
+  margin: 14px 0 6px;
+}
+
+.interview-content p {
+  margin: 6px 0;
+  line-height: 1.7;
+}
+
+.interview-content strong {
+  color: #ff6b2b;
+  font-weight: 600;
+}
+
+.interview-content code {
+  background: rgba(255,255,255,.06);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  color: #06b6d4;
+}
+
+.interview-content pre {
+  background: rgba(0,0,0,.3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  overflow-x: auto;
+  margin: 10px 0;
+}
+
+.interview-content pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 11px;
+  color: var(--txt);
+  line-height: 1.5;
+}
+
+.interview-content ul,
+.interview-content ol {
+  margin: 6px 0;
+  padding-left: 20px;
+}
+
+.interview-content li {
+  margin: 3px 0;
+  line-height: 1.6;
+}
